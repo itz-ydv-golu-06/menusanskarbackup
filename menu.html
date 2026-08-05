@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Full Menu | Sanskar Grand by Maan</title>
+<meta name="description" content="Browse the complete Sanskar Grand menu — starters, soups, Indian main course, Chinese, rice & noodles, breads, beverages and desserts. Search, filter, and save your favourites." />
+<link rel="canonical" href="https://sanskargrand.example.com/menu.html" />
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Cormorant+Garamond:ital@1&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/menu.css" />
+</head>
+<body>
+
+<div id="loading-screen" aria-hidden="true">
+  <div class="loader-crest">
+    <img src="images/logo.png" alt="Sanskar Grand Logo" class="loader-logo">
+</div>
+  <p class="loader-text">Plating up the menu…</p>
+</div>
+
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"><img src="images/logo.png" alt="Sanskar Grand logo" class="brand-logo-img" onerror="this.style.display='none'"><span class="brand-fallback"></span></span>
+      <span>Sanskar Grand<em>By Maan</em></span>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#specials">Specials</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="menu.html" class="active">Full Menu</a>
+    </nav>
+    <div class="nav-cta">
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      <a href="tel:+919799341599" class="btn btn-gold">Reserve</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="menu-hero">
+  <div class="container">
+    <p class="eyebrow">call 222</p>
+    <h1>Our Complete Menu</h1>
+    <p>Every dish is prepared fresh, 100% vegetarian, from our  kitchen. Search, filter by category,and call 222 to order.</p>
+  </div>
+</section>
+
+<div class="menu-toolbar">
+  <div class="container">
+    <div class="toolbar-row">
+      <label class="search-box">
+        <span class="icon">🔍</span>
+        <input type="search" id="search-input" placeholder="Search dishes — e.g. paneer, biryani, kheer…" aria-label="Search the menu" />
+      </label>
+      <div class="toolbar-actions">
+        <button class="icon-btn" id="fav-filter-btn" aria-label="Show favourites only" title="Show favourites only">♥</button>
+        <div class="view-toggle">
+          <button id="view-grid-btn" class="active" aria-label="Grid view">▦ Grid</button>
+          <button id="view-list-btn" aria-label="List view">☰ List</button>
+        </div>
+      </div>
+    </div>
+    <div class="cat-filters" id="cat-filters">
+      <!-- populated by menu.js -->
+    </div>
+  </div>
+</div>
+
+<main class="menu-wrap">
+  <div class="container">
+    <div class="results-meta">
+      <span id="results-count">Loading…</span>
+      <span>Prices in ₹ · Taxes as applicable</span>
+    </div>
+    <div class="menu-grid" id="menu-grid">
+      <!-- populated by menu.js -->
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand"><span class="brand-mark"><img src="images/logo.png" alt="Sanskar Grand logo" class="brand-logo-img" onerror="this.style.display='none'"><span class="brand-fallback">
+        </span></span><span>Sanskar Grand<em>By Maan</em></span></a>
+        <p>A premium, all-vegetarian dining experience on Jaipur's 200 Feet Bypass Road.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="https://wa.me/919799341599" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h6>Explore</h6>
+        <ul>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="menu.html">Full Menu</a></li>
+          <li><a href="index.html#gallery">Gallery</a></li>
+        </ul>
+      </div>
+     
+      <div class="footer-col">
+        <h6>Contact</h6>
+        <ul>
+          <li><a href="tel:+919799341599">+91 9799341599</a></li>
+          <li><a href="mailto:sanskargrandbymaan@gmail.com">sanskargrandbymaan@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Sanskar Grand by Maan. All rights reserved.</span>
+      <span><a href="admin.html">Staff Login</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="floating-actions">
+  <a class="fab fab-whatsapp" href="https://wa.me/919799341599" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+  <a class="fab fab-call" href="tel:+919799341599" aria-label="Call the restaurant">📞</a>
+</div>
+
+<script src="js/storage.js"></script>
+<script src="js/menu.js"></script>
+</body>
+</html>
