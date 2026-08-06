@@ -46,8 +46,9 @@
     <nav class="side-nav">
       <button class="active" data-panel="dashboard">📊 Dashboard</button>
       <button data-panel="items">🍽️ Menu Items</button>
+      <button data-panel="orders">🧾 Orders</button>
       <button data-panel="categories">🗂️ Categories</button>
-      <button data-panel="data">💾 Import / Export</button>
+      <button data-panel="data">💾 Data Tools</button>
     </nav>
 
     <div class="sidebar-footer">
@@ -77,9 +78,8 @@
         <p style="color:rgba(250,246,236,0.65); font-size:0.9rem; line-height:1.8;">
           Use <strong>Menu Items</strong> to add, edit or remove dishes, change prices, mark items as
           Best Seller or Chef Special, and toggle availability. Use <strong>Categories</strong> to rename
-          or add new sections. When you're happy with your changes, open <strong>Import / Export</strong>
-          to download an updated <code>menu.json</code> and commit it to your GitHub repository — that's
-          what keeps the change permanent for every visitor, since localStorage only lives in this browser.
+          or add new sections. Every change here is saved straight to Firestore and appears on the live
+          site immediately — no download, no GitHub upload, nothing else to do.
         </p>
       </div>
     </section>
@@ -115,6 +115,37 @@
       </div>
     </section>
 
+    <!-- ---------------- Orders Panel ---------------- -->
+    <section class="admin-panel" id="panel-orders">
+      <div class="admin-topbar">
+        <div>
+          <h2>Orders</h2>
+          <p>Orders placed from the "Buy Now" cart on the live menu, newest first.</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-outline" id="refresh-orders-btn">↻ Refresh</button>
+        </div>
+      </div>
+      <div class="panel-card admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Placed</th>
+              <th>Customer</th>
+              <th>Contact</th>
+              <th>Table / Address</th>
+              <th>Items</th>
+              <th>Total</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="orders-table-body">
+            <tr><td colspan="7" style="text-align:center; padding:40px;">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <!-- ---------------- Categories Panel ---------------- -->
     <section class="admin-panel" id="panel-categories">
       <div class="admin-topbar">
@@ -135,8 +166,8 @@
     <section class="admin-panel" id="panel-data">
       <div class="admin-topbar">
         <div>
-          <h2>Import / Export</h2>
-          <p>Back up, restore, preview or reset the menu.</p>
+          <h2>Data Tools</h2>
+          <p>Every change you make is saved to Firestore instantly — no download, no GitHub upload.</p>
         </div>
       </div>
       <div class="tools-grid">
@@ -146,22 +177,9 @@
           <button class="btn btn-outline" id="preview-btn">Open Menu Preview ↗</button>
         </div>
         <div class="tool-card">
-          <h4>Export JSON</h4>
-          <p>Download the current menu as <code>menu.json</code> — commit this file to GitHub Pages to publish.</p>
-          <button class="btn btn-gold" id="export-btn">Download menu.json</button>
-        </div>
-        <div class="tool-card">
-          <h4>Import JSON</h4>
-          <p>Restore or replace the working menu from a previously exported JSON file.</p>
-          <label class="btn btn-outline" style="cursor:pointer;">
-            Choose File
-            <input type="file" id="import-input" accept="application/json" style="display:none;" />
-          </label>
-        </div>
-        <div class="tool-card">
-          <h4>Reset Menu</h4>
-          <p>Discard all local changes and reload the original <code>data/menu.json</code>.</p>
-          <button class="btn btn-outline" id="reset-btn" style="border-color:#c0392b; color:#f2a9a9;">Reset to Defaults</button>
+          <h4>Load Starter Menu into Firestore</h4>
+          <p>Wipes the current Firestore menu and re-seeds it from the bundled <code>data/menu.json</code>. Use this once to migrate your existing menu, or any time to restore the starting point.</p>
+          <button class="btn btn-outline" id="reset-btn" style="border-color:#c0392b; color:#f2a9a9;">Load Starter Menu</button>
         </div>
       </div>
     </section>
@@ -219,6 +237,11 @@
 
 <div class="toast" id="toast"></div>
 
+<!-- Firebase (Firestore + Storage) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script src="firebase-config.js"></script>
 <script src="js/storage.js"></script>
 <script src="js/admin.js"></script>
 </body>

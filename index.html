@@ -49,7 +49,7 @@
 
 <!-- ==================== Loading Screen ==================== -->
 <div id="loading-screen" aria-hidden="true">
-  <img src="images/logo.png" alt="Sanskar Grand Logo" class="loader-logo">
+  <div class="loader-crest">SG</div>
   <p class="loader-text">Setting the table…</p>
 </div>
 
@@ -57,7 +57,7 @@
 <header class="navbar" id="navbar">
   <div class="container nav-inner">
     <a href="index.html" class="brand">
-      <span class="brand-mark"><img src="images/logo.png" alt="Sanskar Grand logo" class="brand-logo-img" onerror="this.style.display='none'"><span class="brand-fallback"></span></span>
+      <span class="brand-mark"><img src="images/logo.png" alt="Sanskar Grand logo" class="brand-logo-img" onerror="this.style.display='none'"><span class="brand-fallback">SG</span></span>
       <span>Sanskar Grand<em>By Maan</em></span>
     </a>
 
@@ -73,7 +73,7 @@
 
     <div class="nav-cta">
       <a href="menu.html" class="btn btn-outline">View Menu</a>
-      <a href="tel:+919799341599" class="btn btn-gold">Reserve</a>
+      <a href="tel:+919000000000" class="btn btn-gold">Reserve</a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -109,15 +109,15 @@
     <div class="hero-visual" aria-hidden="true">
       <div class="hero-card card-back">
         <div class="plate-placeholder" style="aspect-ratio:4/3;border-radius:14px;"><span>🍛</span></div>
-        <span class="tag">Rooms</span>
-        <h4>super deluxe</h4>
-        <p>fully equiped</p>
+        <span class="tag">Main Course</span>
+        <h4>Butter Paneer Masala</h4>
+        <p>Velvety tomato-butter gravy</p>
       </div>
       <div class="hero-card card-front">
-        <div class="hotel" style="aspect-ratio:4/3;border-radius:14px;"><span>🍮</span></div>
-        <span class="tag">Sanskar Grand</span>
-        <h4>hotel Front</h4>
-        <p>serve luxury</p>
+        <div class="plate-placeholder" style="aspect-ratio:4/3;border-radius:14px;"><span>🍮</span></div>
+        <span class="tag">Dessert</span>
+        <h4>Hot Gulab Jamun</h4>
+        <p>Served warm, rose-scented syrup</p>
       </div>
     </div>
   </div>
@@ -141,7 +141,7 @@
     </div>
     <div class="about-copy reveal reveal-delay-1">
       <p class="eyebrow">Our Story</p>
-      <h2 class="section-title">A <em>grand</em> Room inside a premium stay</h2>
+      <h2 class="section-title">A <em>grand</em> table inside a premium stay</h2>
       <p>
         Set within the Sanskar Grand hotel on Jaipur's 200 Feet Bypass Road, our kitchen
         serves guests and city diners alike — from hearty Indian breakfasts to slow-cooked
@@ -193,6 +193,20 @@
   </div>
 </section>
 
+<!-- ==================== Categories ==================== -->
+<section class="categories" id="categories">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Explore</p>
+      <h2 class="section-title">Menu <em>Categories</em></h2>
+      <p class="section-sub" style="margin:0 auto;">From soul-warming soups to tandoor breads — jump straight to what you're craving.</p>
+    </div>
+    <div class="cat-grid" id="category-grid">
+      <!-- populated by app.js -->
+    </div>
+  </div>
+</section>
+
 <!-- ==================== Gallery ==================== -->
 <section class="gallery" id="gallery">
   <div class="container">
@@ -201,12 +215,12 @@
       <h2 class="section-title">Our <em>Gallery</em></h2>
     </div>
     <div class="gallery-grid">
-      <figure class="reveal"><div class="ourhotel" style="height:100%;"><span>🏨</span></div><figcaption>our hotel at night</figcaption></figure>
-      <figure class="reveal reveal-delay-1"><div class="restorant" style="height:100%;"><span>🍛</span></div><figcaption>restorant</figcaption></figure>
-      <figure class="reveal reveal-delay-2"><div class="ourteam" style="height:100%;"><span>🥘</span></div><figcaption> Staff</figcaption></figure>
-      <figure class="reveal reveal-delay-3"><div class="ourrooms" style="height:100%;"><span>🍽️</span></div><figcaption>The Dining Room</figcaption></figure>
-      <figure class="reveal"><div class="banquete" style="height:100%;"><span>🫓</span></div><figcaption>Our banquete</figcaption></figure>
-      <figure class="reveal reveal-delay-1"><div class="chef" style="height:100%;"><span>🍮</span></div><figcaption>Trenned chef</figcaption></figure>
+      <figure class="reveal"><div class="plate-placeholder" style="height:100%;"><span>🏨</span></div><figcaption>The Facade at Night</figcaption></figure>
+      <figure class="reveal reveal-delay-1"><div class="plate-placeholder" style="height:100%;"><span>🍛</span></div><figcaption>Main Course Spread</figcaption></figure>
+      <figure class="reveal reveal-delay-2"><div class="plate-placeholder" style="height:100%;"><span>🥘</span></div><figcaption>Live Kitchen</figcaption></figure>
+      <figure class="reveal reveal-delay-3"><div class="plate-placeholder" style="height:100%;"><span>🍽️</span></div><figcaption>The Dining Room</figcaption></figure>
+      <figure class="reveal"><div class="plate-placeholder" style="height:100%;"><span>🫓</span></div><figcaption>Tandoor Breads</figcaption></figure>
+      <figure class="reveal reveal-delay-1"><div class="plate-placeholder" style="height:100%;"><span>🍮</span></div><figcaption>Dessert Table</figcaption></figure>
     </div>
   </div>
 </section>
@@ -252,7 +266,7 @@
   <div class="container">
     <div class="section-head reveal">
       <p class="eyebrow">Visit Us</p>
-      <h2 class="section-title">Book Your <em>room</em></h2>
+      <h2 class="section-title">Reserve Your <em>Table</em></h2>
     </div>
     <div class="contact-grid">
       <div class="contact-info reveal">
@@ -266,17 +280,17 @@
         </div>
         <div class="info-row">
           <div class="icon-badge">✉️</div>
-          <div><h5>Email</h5><a href="mailto:sanskargrandbymaan@gmail.com">sanskargrandbymaan@gmail.com</a></div>
+          <div><h5>Email</h5><a href="mailto:sanskar@thecountryinn.com">sanskar@thecountryinn.com</a></div>
         </div>
         <div class="info-row">
           <div class="icon-badge">📞</div>
-          <div><h5>Phone</h5><a href="tel:+919799341599">+919799341599</a></div>
+          <div><h5>Phone</h5><a href="tel:+919000000000">+91 90000 00000</a></div>
         </div>
       </div>
       <div class="map-wrap reveal reveal-delay-1">
         <iframe
           title="Sanskar Grand location map"
-          src="https://www.google.com/maps?q=sanskar+grand+by+maan+Panchyawala,+Jaipur,+Rajasthan+302024&output=embed"
+          src="https://www.google.com/maps?q=Panchyawala,+Jaipur,+Rajasthan+302024&output=embed"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
@@ -293,8 +307,9 @@
         <a href="index.html" class="brand"><span class="brand-mark"><img src="images/logo.png" alt="Sanskar Grand logo" class="brand-logo-img" onerror="this.style.display='none'"><span class="brand-fallback">SG</span></span><span>Sanskar Grand<em>By Maan</em></span></a>
         <p>A premium, all-vegetarian dining experience on Jaipur's 200 Feet Bypass Road — part of the Sanskar Grand hotel by Maan.</p>
         <div class="footer-social">
-          <a href="https://www.instagram.com/sanskar_grand?igsh=NGhwZ3Ricm1xeHpr" aria-label="Instagram">IG</a>
-          <a href="https://wa.me/919799341599" aria-label="WhatsApp">WP</a>
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="https://wa.me/919000000000" aria-label="WhatsApp">WA</a>
         </div>
       </div>
       <div class="footer-col">
@@ -318,8 +333,8 @@
       <div class="footer-col">
         <h6>Contact</h6>
         <ul>
-          <li><a href="tel:+919799341599">+919799341599</a></li>
-          <li><a href="mailto:sanskargrandbymaan@gmail.com">sanskargrandbymaan@gmail.com</a></li>
+          <li><a href="tel:+919000000000">+91 90000 00000</a></li>
+          <li><a href="mailto:sanskar@thecountryinn.com">sanskar@thecountryinn.com</a></li>
           <li><a href="#contact">310, 200 Feet Bypass Road, Jaipur</a></li>
         </ul>
       </div>
@@ -333,10 +348,15 @@
 
 <!-- ==================== Floating Actions ==================== -->
 <div class="floating-actions">
-  <a class="fab fab-whatsapp" href="https://wa.me/919799341599" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
-  <a class="fab fab-call" href="tel:+919799341599" aria-label="Call the restaurant">📞</a>
+  <a class="fab fab-whatsapp" href="https://wa.me/919000000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+  <a class="fab fab-call" href="tel:+919000000000" aria-label="Call the restaurant">📞</a>
 </div>
 
+<!-- Firebase (Firestore + Storage) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script src="firebase-config.js"></script>
 <script src="js/storage.js"></script>
 <script src="js/app.js"></script>
 </body>
