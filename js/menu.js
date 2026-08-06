@@ -6,14 +6,24 @@
    filters simply recompute a "visible" subset and re-render —
    no separate DOM state to keep in sync.
 
-   Loaded as type="module" (see menu.html) so it can import the
-   ordering system's Firebase helpers directly. It still freely
-   reads the classic-script globals SanskarDB (storage.js) and
-   CartStore (cart.js), since classic <script> globals stay
+   Loaded as type="module" (see menu.html) purely so it can use
+   dynamic import() for the Firebase ordering helpers. It still
+   freely reads the classic-script globals SanskarDB (storage.js)
+   and CartStore (cart.js), since classic <script> globals stay
    visible to module scripts loaded afterwards in the same page.
+
+   IMPORTANT: firebase.js is intentionally NOT imported at the top
+   of this file. If Firebase isn't configured yet (placeholder keys
+   in js/firebase.js) or its CDN import fails, a top-level import
+   would throw before any of this file runs — silently breaking
+   menu rendering, Add to Cart, and the cart drawer along with it.
+   Instead it's dynamically imported inside handlePlaceOrder(),
+   right when it's actually needed, so the rest of the ordering
+   experience (cart, drawer, totals) works even before Firebase is
+   set up — only "Order Now" needs it.
    ============================================================== */
 
-import { placeOrder, GST_RATE } from "./firebase.js";
+const GST_RATE = 0.05; // keep in sync with js/firebase.js — 5%, set to 0 to disable
 
 let ALL_MENU = null;         // full { restaurant, categories, items }
 let activeCategory = "all";
@@ -437,6 +447,7 @@ async function handlePlaceOrder(e) {
   errorEl.hidden = true;
 
   try {
+    const { placeOrder } = await import("./firebase.js");
     await placeOrder({ guestName, roomNumber, mobile, note, items });
     CartStore.clearCart();
     showSuccessView();

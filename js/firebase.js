@@ -36,17 +36,13 @@ import {
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
 
-/* ---------------------------------------------------------------
-   ⚠️ REPLACE THESE with your own project's config (Firebase
-   console → Project settings → General → Your apps → Web app).
-   --------------------------------------------------------------- */
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyBTWRBEE0-ra4wVRxt4M_wAW8XiZ7x7Dug",
+  authDomain: "sanskarmenu.firebaseapp.com",
+  projectId: "sanskarmenu",
+  storageBucket: "sanskarmenu.firebasestorage.app",
+  messagingSenderId: "837613240142",
+  appId: "1:837613240142:web:34ac81c17a8140fd3c681f",
 };
 
 const app = initializeApp(firebaseConfig);
