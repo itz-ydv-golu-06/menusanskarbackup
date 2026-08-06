@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Order Placed | Sanskar Grand by Maan</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Cormorant+Garamond:ital@1&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/style.css" />
+<style>
+  .thankyou-wrap {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 24px; text-align: center;
+  }
+  .thankyou-card {
+    max-width: 460px; width: 100%;
+    background: var(--surface-glass); border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg); padding: 48px 32px;
+  }
+  .thankyou-check {
+    width: 88px; height: 88px; border-radius: 50%; background: var(--teal-600); color: var(--cream-100);
+    font-size: 2.6rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 22px;
+    animation: successPop 0.6s var(--ease-luxury);
+  }
+  @keyframes successPop { 0% { transform: scale(0); opacity: 0; } 70% { transform: scale(1.1); } 100% { transform: scale(1); opacity: 1; } }
+  .thankyou-card h1 { font-family: var(--font-display); font-size: 1.7rem; margin-bottom: 12px; }
+  .thankyou-card p { color: rgba(250,246,236,0.7); line-height: 1.8; margin-bottom: 28px; }
+  .thankyou-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<div class="thankyou-wrap">
+  <div class="thankyou-card">
+    <div class="thankyou-check">✓</div>
+    <h1>Thank You!</h1>
+    <p>Your order has been sent straight to our kitchen. Our team will bring it to your room shortly — feel free to call the front desk if you need anything else in the meantime.</p>
+    <div class="thankyou-actions">
+      <a href="menu.html" class="btn btn-outline">Order More</a>
+      <a href="index.html" class="btn btn-gold">Back to Home</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

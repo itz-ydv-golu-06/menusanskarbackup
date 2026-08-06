@@ -1,0 +1,68 @@
+rules_version = '2';
+
+/* ==============================================================
+   Sanskar Grand — Firestore Security Rules
+
+   How to publish:
+   - Firebase console → Firestore Database → Rules → paste this
+     file's contents → Publish.
+   - Or with the Firebase CLI: `firebase deploy --only firestore:rules`
+     (requires this file to be referenced from firebase.json).
+
+   Model:
+   - "Admin" = any user signed in via Firebase Authentication
+     (Email/Password). Create that account in the Firebase console
+     under Authentication → Users, then sign in on the admin.html
+     "Orders" panel with it.
+   - Guests never sign in. They can only CREATE an order — never
+     read, edit, or delete any order (including their own), which
+     matches the "guests cannot edit/delete orders" requirement.
+   ============================================================== */
+
+function isAdmin() {
+  return request.auth != null;
+}
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /* ---------------------- orders ---------------------- */
+    match /orders/{orderId} {
+
+      // Guests may create an order, but only one that looks like a
+      // real, well-formed order — this stops garbage/hostile writes
+      // even though the endpoint itself is public.
+      allow create: if
+        request.resource.data.keys().hasAll([
+          'guestName', 'roomNumber', 'items', 'totalAmount', 'totalItems', 'status', 'createdAt'
+        ]) &&
+        request.resource.data.guestName is string &&
+        request.resource.data.guestName.size() > 0 &&
+        request.resource.data.roomNumber is string &&
+        request.resource.data.roomNumber.size() > 0 &&
+        request.resource.data.items is list &&
+        request.resource.data.items.size() > 0 &&
+        request.resource.data.totalAmount is number &&
+        request.resource.data.totalAmount >= 0 &&
+        request.resource.data.status == 'Pending' &&
+        request.resource.data.createdAt == request.time;
+
+      // Guests can never read, update, or delete — only signed-in
+      // admins can (view, change status, delete completed orders).
+      allow read, update, delete: if isAdmin();
+    }
+
+    /* ---------------------- menu ---------------------- */
+    // Reserved for a future move of menu.json into Firestore. Public
+    // read (guests need to browse the menu), admin-only write.
+    match /menu/{itemId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Deny everything else by default.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
