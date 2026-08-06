@@ -296,6 +296,7 @@ body.theme-light .btn-gold { color: #221a12; }
 .cart-drawer.open { transform: translateX(0); }
 
 .cart-view { display: flex; flex-direction: column; height: 100%; overflow: hidden; }
+.cart-view[hidden] { display: none; }
 .cart-drawer-head {
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
   padding: 20px 22px; border-bottom: 1px solid var(--border-glass); flex-shrink: 0;
