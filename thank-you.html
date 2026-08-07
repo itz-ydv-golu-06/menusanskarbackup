@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Order Placed | Sanskar Grand by Maan</title>
+<title>Order Status | Sanskar Grand by Maan</title>
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="icons/favicon.svg" type="image/svg+xml" />
 
@@ -18,9 +18,9 @@
     padding: 24px; text-align: center;
   }
   .thankyou-card {
-    max-width: 460px; width: 100%;
+    max-width: 480px; width: 100%;
     background: var(--surface-glass); border: 1px solid var(--border-glass);
-    border-radius: var(--radius-lg); padding: 48px 32px;
+    border-radius: var(--radius-lg); padding: 44px 32px;
   }
   .thankyou-check {
     width: 88px; height: 88px; border-radius: 50%; background: var(--teal-600); color: var(--cream-100);
@@ -28,9 +28,43 @@
     animation: successPop 0.6s var(--ease-luxury);
   }
   @keyframes successPop { 0% { transform: scale(0); opacity: 0; } 70% { transform: scale(1.1); } 100% { transform: scale(1); opacity: 1; } }
-  .thankyou-card h1 { font-family: var(--font-display); font-size: 1.7rem; margin-bottom: 12px; }
-  .thankyou-card p { color: rgba(250,246,236,0.7); line-height: 1.8; margin-bottom: 28px; }
-  .thankyou-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .thankyou-card h1 { font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 10px; }
+  .thankyou-card > p { color: rgba(250,246,236,0.7); line-height: 1.8; margin-bottom: 6px; }
+  .thankyou-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+
+  /* ---- Status tracker ---- */
+  .tracker { display: flex; justify-content: space-between; margin: 34px 0 28px; position: relative; text-align: center; }
+  .tracker::before {
+    content: ""; position: absolute; top: 13px; left: 5%; right: 5%; height: 2px;
+    background: var(--border-glass); z-index: 0;
+  }
+  .tracker-step { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .tracker-dot {
+    width: 28px; height: 28px; border-radius: 50%; background: var(--navy-800);
+    border: 2px solid var(--border-glass); display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; color: rgba(250,246,236,0.4); transition: all 0.3s var(--ease-luxury);
+  }
+  .tracker-label { font-size: 0.72rem; color: rgba(250,246,236,0.45); letter-spacing: 0.03em; }
+  .tracker-step.done .tracker-dot { background: var(--teal-600); border-color: var(--teal-600); color: var(--cream-100); }
+  .tracker-step.done .tracker-label { color: var(--cream-100); }
+  .tracker-step.current .tracker-dot { background: var(--gold-500); border-color: var(--gold-500); color: var(--ink-900); box-shadow: 0 0 0 5px rgba(232,205,138,0.18); }
+  .tracker-step.current .tracker-label { color: var(--gold-300); font-weight: 600; }
+
+  .status-line { font-family: var(--font-display); font-size: 1.15rem; margin-bottom: 4px; }
+  .status-sub { color: rgba(250,246,236,0.55); font-size: 0.85rem; margin-bottom: 0; }
+
+  .cancelled-banner {
+    background: rgba(192,57,43,0.15); border: 1px solid rgba(192,57,43,0.5); color: #e57373;
+    border-radius: var(--radius-md); padding: 18px; margin: 26px 0; font-size: 0.9rem;
+  }
+
+  .order-summary { text-align: left; margin-top: 26px; border-top: 1px solid var(--border-glass); padding-top: 20px; }
+  .order-summary h3 { font-family: var(--font-display); font-size: 1rem; margin-bottom: 12px; }
+  .order-summary ul { list-style: none; padding: 0; margin: 0 0 12px; }
+  .order-summary li { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 5px 0; color: rgba(250,246,236,0.8); }
+  .order-summary .grand-row { display: flex; justify-content: space-between; font-weight: 700; color: var(--gold-300); border-top: 1px solid var(--border-glass); padding-top: 10px; margin-top: 6px; }
+
+  .spinner-line { color: rgba(250,246,236,0.5); font-size: 0.85rem; }
 </style>
 </head>
 <body>
@@ -38,14 +72,126 @@
 <div class="thankyou-wrap">
   <div class="thankyou-card">
     <div class="thankyou-check">✓</div>
-    <h1>Thank You!</h1>
-    <p>Your order has been sent straight to our kitchen. Our team will bring it to your room shortly — feel free to call the front desk if you need anything else in the meantime.</p>
+    <h1 id="ty-heading">Thank You!</h1>
+    <p id="ty-sub">Your order has been sent straight to our kitchen.</p>
+
+    <!-- Live tracker (only shown when we have an order ID to track) -->
+    <div id="tracker-block" hidden>
+      <div class="tracker" id="tracker">
+        <div class="tracker-step" data-step="Pending"><span class="tracker-dot">1</span><span class="tracker-label">Pending</span></div>
+        <div class="tracker-step" data-step="Preparing"><span class="tracker-dot">2</span><span class="tracker-label">Preparing</span></div>
+        <div class="tracker-step" data-step="Ready"><span class="tracker-dot">3</span><span class="tracker-label">Ready</span></div>
+        <div class="tracker-step" data-step="Delivered"><span class="tracker-dot">4</span><span class="tracker-label">Delivered</span></div>
+      </div>
+      <p class="status-line" id="status-line">Loading status…</p>
+      <p class="status-sub" id="status-sub">Updates live — no need to refresh this page.</p>
+
+      <div class="cancelled-banner" id="cancelled-banner" hidden>
+        😔 This order was cancelled. Please contact the front desk if you have any questions.
+      </div>
+
+      <div class="order-summary" id="order-summary" hidden>
+        <h3>Room <span id="summary-room"></span> · <span id="summary-guest"></span></h3>
+        <ul id="summary-items"></ul>
+        <div class="grand-row"><span>Total</span><span id="summary-total"></span></div>
+      </div>
+    </div>
+
+    <p class="spinner-line" id="no-tracker-note" hidden>Feel free to call the front desk if you need anything else in the meantime.</p>
+
     <div class="thankyou-actions">
       <a href="menu.html" class="btn btn-outline">Order More</a>
       <a href="index.html" class="btn btn-gold">Back to Home</a>
     </div>
   </div>
 </div>
+
+<script type="module">
+  import { listenToOrder } from "./js/firebase.js";
+
+  const STEP_ORDER = ["Pending", "Preparing", "Ready", "Delivered"];
+  const params = new URLSearchParams(window.location.search);
+  const orderId = params.get("order");
+
+  const trackerBlock = document.getElementById("tracker-block");
+  const noTrackerNote = document.getElementById("no-tracker-note");
+
+  if (!orderId) {
+    // Direct visit with no order to track — show the plain static message.
+    noTrackerNote.hidden = false;
+  } else {
+    trackerBlock.hidden = false;
+    listenToOrder(
+      orderId,
+      (order) => {
+        if (!order) {
+          document.getElementById("status-line").textContent = "We couldn't find this order.";
+          document.getElementById("status-sub").textContent = "It may have been removed. Please check with the front desk.";
+          return;
+        }
+        renderStatus(order);
+      },
+      (err) => {
+        console.error(err);
+        document.getElementById("status-line").textContent = "Couldn't load live status right now.";
+        document.getElementById("status-sub").textContent = "Your order was still placed successfully — check with the front desk if you're unsure.";
+      }
+    );
+  }
+
+  function renderStatus(order) {
+    const heading = document.getElementById("ty-heading");
+    const sub = document.getElementById("ty-sub");
+    const statusLine = document.getElementById("status-line");
+    const statusSub = document.getElementById("status-sub");
+    const cancelledBanner = document.getElementById("cancelled-banner");
+    const tracker = document.getElementById("tracker");
+
+    heading.textContent = "Order Received!";
+    sub.textContent = `Room ${order.roomNumber || "—"} · ${order.guestName || "Guest"}`;
+
+    if (order.status === "Cancelled") {
+      tracker.style.opacity = "0.35";
+      cancelledBanner.hidden = false;
+      statusLine.textContent = "Order Cancelled";
+      statusSub.textContent = "";
+    } else {
+      cancelledBanner.hidden = true;
+      tracker.style.opacity = "1";
+      const currentIndex = STEP_ORDER.indexOf(order.status);
+      document.querySelectorAll(".tracker-step").forEach((el) => {
+        const stepIndex = STEP_ORDER.indexOf(el.dataset.step);
+        el.classList.remove("done", "current");
+        if (stepIndex < currentIndex) el.classList.add("done");
+        else if (stepIndex === currentIndex) el.classList.add("current");
+      });
+
+      const messages = {
+        Pending: "Your order has been received and is waiting to be prepared.",
+        Preparing: "Our kitchen is preparing your order right now.",
+        Ready: "Your order is ready and on its way to your room!",
+        Delivered: "Delivered — enjoy your meal!",
+      };
+      statusLine.textContent = order.status;
+      statusSub.textContent = messages[order.status] || "Updates live — no need to refresh this page.";
+    }
+
+    const summary = document.getElementById("order-summary");
+    summary.hidden = false;
+    document.getElementById("summary-room").textContent = order.roomNumber || "—";
+    document.getElementById("summary-guest").textContent = order.guestName || "Guest";
+    document.getElementById("summary-items").innerHTML = (order.items || [])
+      .map((i) => `<li><span>${escapeHtml(i.name)} × ${i.qty}</span><span>₹${i.subtotal}</span></li>`)
+      .join("");
+    document.getElementById("summary-total").textContent = `₹${order.totalAmount ?? 0}`;
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, (c) => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+    }[c]));
+  }
+</script>
 
 </body>
 </html>
