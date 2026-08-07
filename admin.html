@@ -7,6 +7,16 @@
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="icons/favicon.svg" type="image/svg+xml" />
 
+<!-- PWA: lets staff "Add to Home Screen" and use this as an installable app,
+     and is also what a service turns into a real .apk (see README.md). -->
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#0b1512" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="SG Admin" />
+<link rel="apple-touch-icon" href="icons/pwa/apple-touch-icon.png" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -64,6 +74,11 @@
   </header>
 
   <main class="orders-shell-main">
+
+    <!-- Custom new-order ring. Drop your own file at sounds/new-order.mp3 —
+         if it's missing or fails to load, orders-admin.js falls back to a
+         synthesized ring automatically, so nothing breaks either way. -->
+    <audio id="new-order-audio" src="sounds/new-order.mp3" preload="auto"></audio>
     <div id="orders-auth-gate">
       <div class="admin-topbar">
         <div>
@@ -95,6 +110,8 @@
           <p id="orders-signed-in-as">Updates in real time — no refresh needed.</p>
         </div>
         <div class="topbar-actions">
+          <button type="button" class="btn btn-outline alert-toggle" id="orders-sound-toggle">🔔 Sound On</button>
+          <button type="button" class="btn btn-outline alert-toggle" id="orders-notify-toggle">🖥️ Alerts Off</button>
           <button class="btn btn-outline" id="orders-signout-btn">Sign Out</button>
         </div>
       </div>
@@ -317,5 +334,12 @@
 <script src="js/storage.js"></script>
 <script src="js/admin.js"></script>
 <script type="module" src="js/orders-admin.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("sw.js").catch((err) => console.warn("SW registration failed:", err));
+    });
+  }
+</script>
 </body>
 </html>
