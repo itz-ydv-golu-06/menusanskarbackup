@@ -25,6 +25,47 @@
 
 const GST_RATE = 0.05; // keep in sync with js/firebase.js — 5%, set to 0 to disable
 
+/* ---- Ordering hours: 7:00 AM – 10:30 PM, guest's local device time ----
+   Backed up server-side too — see isWithinOrderingHours() in firestore.rules,
+   which rejects the write outright even if someone bypasses this UI. */
+const ORDER_WINDOW_START_MIN = 7 * 60;        // 7:00 AM
+const ORDER_WINDOW_END_MIN = 22 * 60 + 30;    // 10:30 PM
+
+function isOrderingOpen() {
+  const now = new Date();
+  const minutes = now.getHours() * 60 + now.getMinutes();
+  return minutes >= ORDER_WINDOW_START_MIN && minutes <= ORDER_WINDOW_END_MIN;
+}
+
+/* ---- Per-device order rate limit: max 2 orders per rolling 60s window ----
+   This is a client-side, per-browser limiter (localStorage), not a true
+   per-IP limit — a real IP-based limit needs a server (Cloud Functions),
+   which this static-site + client-Firestore setup doesn't use. This still
+   stops accidental double-orders and casual spam from the same device. */
+const ORDER_RATE_LIMIT_KEY = "sg_order_timestamps";
+const ORDER_RATE_LIMIT_MAX = 2;
+const ORDER_RATE_LIMIT_WINDOW_MS = 60 * 1000;
+
+function getRecentOrderTimestamps() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(ORDER_RATE_LIMIT_KEY) || "[]");
+    const cutoff = Date.now() - ORDER_RATE_LIMIT_WINDOW_MS;
+    return Array.isArray(raw) ? raw.filter((t) => t > cutoff) : [];
+  } catch {
+    return [];
+  }
+}
+
+function isRateLimited() {
+  return getRecentOrderTimestamps().length >= ORDER_RATE_LIMIT_MAX;
+}
+
+function recordOrderTimestamp() {
+  const recent = getRecentOrderTimestamps();
+  recent.push(Date.now());
+  localStorage.setItem(ORDER_RATE_LIMIT_KEY, JSON.stringify(recent.slice(-10)));
+}
+
 let ALL_MENU = null;         // full { restaurant, categories, items }
 let activeCategory = "all";
 let activeSearch = "";
@@ -296,6 +337,10 @@ function initCart() {
 
   checkoutBtn?.addEventListener("click", () => {
     if (CartStore.getTotalItems() === 0) return;
+    if (!isOrderingOpen()) {
+      showToast("Room service is closed right now. Hours: 7:00 AM – 10:30 PM.");
+      return;
+    }
     showCheckoutView();
   });
   checkoutBackBtn?.addEventListener("click", showCartView);
@@ -308,6 +353,15 @@ function initCart() {
     renderCartItems(cart);
     renderStickyBar(cart);
   });
+
+  updateHoursBanner();
+  setInterval(updateHoursBanner, 60 * 1000); // re-check as the clock crosses 7:00/22:30
+}
+
+function updateHoursBanner() {
+  const banner = document.getElementById("hours-banner");
+  if (!banner) return;
+  banner.hidden = isOrderingOpen();
 }
 
 function showCartView() {
@@ -424,6 +478,18 @@ async function handlePlaceOrder(e) {
     return;
   }
 
+  if (!isOrderingOpen()) {
+    errorEl.textContent = "Room service is closed right now. Ordering hours are 7:00 AM – 10:30 PM.";
+    errorEl.hidden = false;
+    return;
+  }
+
+  if (isRateLimited()) {
+    errorEl.textContent = "You've placed a couple of orders already — please wait a minute before ordering again.";
+    errorEl.hidden = false;
+    return;
+  }
+
   const cart = CartStore.getCart();
   if (!cart.length) {
     errorEl.textContent = "Your cart is empty.";
@@ -448,11 +514,12 @@ async function handlePlaceOrder(e) {
 
   try {
     const { placeOrder } = await import("./firebase.js");
-    await placeOrder({ guestName, roomNumber, mobile, note, items });
+    const orderId = await placeOrder({ guestName, roomNumber, mobile, note, items });
+    recordOrderTimestamp();
     CartStore.clearCart();
     showSuccessView();
     setTimeout(() => {
-      window.location.href = "thank-you.html";
+      window.location.href = `thank-you.html?order=${encodeURIComponent(orderId)}`;
     }, 1600);
   } catch (err) {
     console.error(err);

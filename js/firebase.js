@@ -96,6 +96,20 @@ export async function placeOrder({ guestName, roomNumber, mobile, note, items })
 }
 
 /* ============================================================
+   Guest side — tracking an order's status after placing it
+   ============================================================ */
+
+/** Live status for ONE order the guest already has the ID for
+ *  (returned by placeOrder). Returns an unsubscribe fn. */
+export function listenToOrder(orderId, onChange, onError) {
+  return onSnapshot(
+    doc(db, "orders", orderId),
+    (snap) => onChange(snap.exists() ? { id: snap.id, ...snap.data() } : null),
+    onError
+  );
+}
+
+/* ============================================================
    Admin side — live orders, status changes, deletion
    ============================================================ */
 
