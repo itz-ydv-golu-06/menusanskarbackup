@@ -1,7 +1,7 @@
 /* ==============================================================
    style.css — Sanskar Grand · Homepage
    Design language: "Gilded Rajasthan Night" — a deep charcoal-teal
-   backdrop with brushed-gold   detailing and a maroon accent, echoing
+   backdrop with brushed-gold detailing and a maroon accent, echoing
    the hotel's own printed menu (teal torn-paper bands, gold crest,
    maroon script). The recurring signature motif is the diagonal
    "torn teal edge" divider lifted straight from that menu card.
@@ -885,4 +885,33 @@ section { position: relative; padding: 110px 0; }
      as guests scroll the menu on small screens. */
   .floating-actions { right: 16px; bottom: 18px; gap: 10px; }
   .fab { width: 48px; height: 48px; font-size: 1.2rem; }
+}
+
+/* ============================================================
+   Rooms & Booking (homepage)
+   ============================================================ */
+.rooms { background: var(--navy-800); }
+
+.btn-block { width: 100%; justify-content: center; }
+
+.video-tour {
+  margin-top: 46px;
+  display: grid; grid-template-columns: 320px 1fr; gap: 30px; align-items: center;
+  background: var(--surface-glass); border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg); padding: 26px; overflow: hidden;
+}
+.video-tour-media {
+  aspect-ratio: 16 / 9; border-radius: var(--radius-md); position: relative;
+}
+.video-tour-media .play-glyph {
+  font-size: 2.2rem; color: var(--cream-100);
+  width: 68px; height: 68px; border-radius: 50%;
+  background: rgba(232,205,138,0.22); border: 1px solid var(--gold-500);
+  display: flex; align-items: center; justify-content: center; padding-left: 4px;
+}
+.video-tour-copy h3 { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 10px; }
+.video-tour-copy p { color: rgba(250,246,236,0.65); font-size: 0.92rem; line-height: 1.8; }
+
+@media (max-width: 760px) {
+  .video-tour { grid-template-columns: 1fr; }
 }
