@@ -16,12 +16,25 @@
 </head>
 <body class="admin-body">
 
-<!-- ==================== Login Screen ==================== -->
-<div class="login-screen" id="login-screen">
+<!-- ==================== Role Select ==================== -->
+<div class="login-screen" id="role-select">
   <div class="login-card">
     <div class="brand-mark"><img src="images/logo.png" alt="Sanskar Grand logo" class="brand-logo-img" onerror="this.style.display='none'"><span class="brand-fallback">SG</span></div>
-    <h1>Staff Login</h1>
-    <p>Sign in to manage the Sanskar Grand menu.</p>
+    <h1>Sanskar Grand Admin</h1>
+    <p>Choose how you'd like to sign in.</p>
+    <div class="role-choice">
+      <button type="button" class="btn btn-gold btn-block" id="role-orders-btn">📦 Staff — Manage Orders</button>
+      <button type="button" class="btn btn-outline btn-block" id="role-owner-btn">🔑 Owner — Edit Menu</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== Owner Login (developer password) ==================== -->
+<div class="login-screen" id="login-screen" style="display:none;">
+  <div class="login-card">
+    <div class="brand-mark"><img src="images/logo.png" alt="Sanskar Grand logo" class="brand-logo-img" onerror="this.style.display='none'"><span class="brand-fallback">SG</span></div>
+    <h1>Owner Login</h1>
+    <p>Sign in to edit the Sanskar Grand menu. Staff managing orders don't need this — they sign in with their own account instead.</p>
     <form id="login-form">
       <div class="login-error" id="login-error"></div>
       <div class="field" style="text-align:left;">
@@ -31,10 +44,91 @@
       <button type="submit" class="btn btn-gold btn-block">Login to Dashboard</button>
     </form>
     <p class="login-hint">Demo credential: <strong>sanskar@grand</strong></p>
+    <button type="button" class="link-btn" id="owner-back-btn">← Back</button>
   </div>
 </div>
 
-<!-- ==================== Admin Shell ==================== -->
+<!-- ==================== Orders Shell (staff, or owner via the sidebar) ====================
+     Its own Firebase Auth gate — completely independent of the owner password
+     above. This is what the Firestore security rules actually check, so it's
+     what really protects guest order data (see firestore.rules). Any staff
+     member with a Firebase login can reach this without ever touching the
+     owner password, and never sees Menu Items / Categories / Import-Export. -->
+<div class="orders-shell" id="orders-shell" style="display:none;">
+  <header class="orders-shell-header">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"><img src="images/logo.png" alt="Sanskar Grand logo" class="brand-logo-img" onerror="this.style.display='none'"><span class="brand-fallback">SG</span></span>
+      <span>Sanskar Grand<em>Orders</em></span>
+    </a>
+    <button type="button" class="btn btn-outline" id="orders-shell-back-btn">← Back</button>
+  </header>
+
+  <main class="orders-shell-main">
+    <div id="orders-auth-gate">
+      <div class="admin-topbar">
+        <div>
+          <h2>Live Orders</h2>
+          <p>Sign in with your Firebase admin account to manage guest orders.</p>
+        </div>
+      </div>
+      <div class="panel-card" style="max-width:420px;">
+        <form id="orders-login-form">
+          <div class="login-error" id="orders-login-error"></div>
+          <div class="field">
+            <label for="orders-email">Admin Email</label>
+            <input type="email" id="orders-email" required autocomplete="username" placeholder="you@example.com" />
+          </div>
+          <div class="field">
+            <label for="orders-password">Password</label>
+            <input type="password" id="orders-password" required autocomplete="current-password" />
+          </div>
+          <button type="submit" class="btn btn-gold btn-block">Sign In</button>
+        </form>
+        <p class="login-hint">Create this account in Firebase console → Authentication → Users. See README.md.</p>
+      </div>
+    </div>
+
+    <div id="orders-dashboard" style="display:none;">
+      <div class="admin-topbar">
+        <div>
+          <h2>Live Orders</h2>
+          <p id="orders-signed-in-as">Updates in real time — no refresh needed.</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-outline" id="orders-signout-btn">Sign Out</button>
+        </div>
+      </div>
+
+      <div class="panel-card orders-toolbar">
+        <input type="search" id="orders-search-room" class="toolbar-input" placeholder="Search by room number…" />
+        <input type="search" id="orders-search-guest" class="toolbar-input" placeholder="Search by guest name…" />
+        <select id="orders-status-filter" class="toolbar-input">
+          <option value="all">All Statuses</option>
+          <option value="Pending">Pending</option>
+          <option value="Preparing">Preparing</option>
+          <option value="Ready">Ready</option>
+          <option value="Delivered">Delivered</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+        <select id="orders-sort" class="toolbar-input">
+          <option value="desc">Latest First</option>
+          <option value="asc">Oldest First</option>
+        </select>
+      </div>
+
+      <div id="orders-empty-state" class="empty-state" hidden>
+        <div class="glyph">📭</div>
+        <p>No orders match your filters.</p>
+      </div>
+
+      <div class="orders-grid" id="orders-grid">
+        <!-- populated by orders-admin.js -->
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ==================== Admin Shell (owner only) ==================== -->
 <div class="admin-shell" id="admin-shell" style="display:none;">
 
   <aside class="admin-sidebar">
@@ -45,13 +139,13 @@
 
     <nav class="side-nav">
       <button class="active" data-panel="dashboard">📊 Dashboard</button>
-      <button data-panel="orders">📦 Orders</button>
       <button data-panel="items">🍽️ Menu Items</button>
       <button data-panel="categories">🗂️ Categories</button>
       <button data-panel="data">💾 Import / Export</button>
     </nav>
 
     <div class="sidebar-footer">
+      <button id="admin-orders-link-btn" class="btn btn-outline btn-block" style="margin-bottom:10px;">📦 View Orders</button>
       <a href="menu.html" target="_blank" class="btn btn-outline btn-block" style="margin-bottom:10px;">Preview Site ↗</a>
       <button id="logout-btn" class="btn btn-outline btn-block">Log Out</button>
     </div>
@@ -82,75 +176,6 @@
           to download an updated <code>menu.json</code> and commit it to your GitHub repository — that's
           what keeps the change permanent for every visitor, since localStorage only lives in this browser.
         </p>
-      </div>
-    </section>
-
-    <!-- ---------------- Orders Panel ---------------- -->
-    <section class="admin-panel" id="panel-orders">
-
-      <!-- Firebase Auth gate — separate from the site-wide password above.
-           This is what the Firestore security rules actually check, so it's
-           what really protects guest order data (see firestore.rules). -->
-      <div id="orders-auth-gate">
-        <div class="admin-topbar">
-          <div>
-            <h2>Live Orders</h2>
-            <p>Sign in with your Firebase admin account to manage guest orders.</p>
-          </div>
-        </div>
-        <div class="panel-card" style="max-width:420px;">
-          <form id="orders-login-form">
-            <div class="login-error" id="orders-login-error"></div>
-            <div class="field">
-              <label for="orders-email">Admin Email</label>
-              <input type="email" id="orders-email" required autocomplete="username" placeholder="you@example.com" />
-            </div>
-            <div class="field">
-              <label for="orders-password">Password</label>
-              <input type="password" id="orders-password" required autocomplete="current-password" />
-            </div>
-            <button type="submit" class="btn btn-gold btn-block">Sign In</button>
-          </form>
-          <p class="login-hint">Create this account in Firebase console → Authentication → Users. See README.md.</p>
-        </div>
-      </div>
-
-      <div id="orders-dashboard" style="display:none;">
-        <div class="admin-topbar">
-          <div>
-            <h2>Live Orders</h2>
-            <p id="orders-signed-in-as">Updates in real time — no refresh needed.</p>
-          </div>
-          <div class="topbar-actions">
-            <button class="btn btn-outline" id="orders-signout-btn">Sign Out</button>
-          </div>
-        </div>
-
-        <div class="panel-card orders-toolbar">
-          <input type="search" id="orders-search-room" class="toolbar-input" placeholder="Search by room number…" />
-          <input type="search" id="orders-search-guest" class="toolbar-input" placeholder="Search by guest name…" />
-          <select id="orders-status-filter" class="toolbar-input">
-            <option value="all">All Statuses</option>
-            <option value="Pending">Pending</option>
-            <option value="Preparing">Preparing</option>
-            <option value="Ready">Ready</option>
-            <option value="Delivered">Delivered</option>
-            <option value="Cancelled">Cancelled</option>
-          </select>
-          <select id="orders-sort" class="toolbar-input">
-            <option value="desc">Latest First</option>
-            <option value="asc">Oldest First</option>
-          </select>
-        </div>
-
-        <div id="orders-empty-state" class="empty-state" hidden>
-          <div class="glyph">📭</div>
-          <p>No orders match your filters.</p>
-        </div>
-
-        <div class="orders-grid" id="orders-grid">
-          <!-- populated by orders-admin.js -->
-        </div>
       </div>
     </section>
 
