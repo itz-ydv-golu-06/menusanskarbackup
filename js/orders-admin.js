@@ -269,28 +269,48 @@ function unlockAudio() {
   if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
 }
 
-/** A short two-note "ding-dong" chime, synthesized — no audio file needed,
- *  so this always works, including inside a wrapped/Median app. */
+/** A loud, urgent "ring-ring… ring-ring" phone-style alert — synthesized,
+ *  no audio file needed, so it always works, including inside the wrapped
+ *  Median app. Square-wave trill instead of a soft sine tone, at close to
+ *  full volume, repeated twice so it's hard to miss over kitchen noise. */
 function playNewOrderChime() {
   unlockAudio();
   if (!audioCtx) return;
   const now = audioCtx.currentTime;
 
-  const playTone = (freq, start, duration) => {
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    osc.type = "sine";
-    osc.frequency.value = freq;
-    gain.gain.setValueAtTime(0, now + start);
-    gain.gain.linearRampToValueAtTime(0.35, now + start + 0.02);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + start + duration);
-    osc.connect(gain).connect(audioCtx.destination);
-    osc.start(now + start);
-    osc.stop(now + start + duration + 0.05);
-  };
+  const master = audioCtx.createGain();
+  master.gain.value = 0.9; // loud
+  master.connect(audioCtx.destination);
 
-  playTone(880, 0, 0.28);    // "ding"
-  playTone(659.25, 0.26, 0.34); // "dong"
+  function ringBurst(startTime, duration) {
+    const osc = audioCtx.createOscillator();
+    osc.type = "square"; // more piercing/alarm-like than a plain sine tone
+
+    const gain = audioCtx.createGain();
+    gain.gain.setValueAtTime(0.0001, now + startTime);
+    gain.gain.linearRampToValueAtTime(1, now + startTime + 0.02);
+    gain.gain.setValueAtTime(1, now + startTime + duration - 0.03);
+    gain.gain.linearRampToValueAtTime(0.0001, now + startTime + duration);
+    osc.connect(gain).connect(master);
+
+    // Classic phone-ring "trill" — fast alternation between two pitches.
+    let t = 0;
+    let high = true;
+    while (t < duration) {
+      osc.frequency.setValueAtTime(high ? 1400 : 950, now + startTime + t);
+      high = !high;
+      t += 0.09;
+    }
+
+    osc.start(now + startTime);
+    osc.stop(now + startTime + duration + 0.02);
+  }
+
+  // "ring-ring … ring-ring" — two rings, a pause, two more rings.
+  ringBurst(0, 0.45);
+  ringBurst(0.6, 0.45);
+  ringBurst(1.4, 0.45);
+  ringBurst(1.95, 0.45);
 }
 
 function showDesktopNotification(order) {
