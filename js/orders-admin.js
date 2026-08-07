@@ -267,13 +267,39 @@ function unlockAudio() {
     if (Ctx) audioCtx = new Ctx();
   }
   if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
+
+  // Some browsers (notably iOS Safari) require each <audio> element you
+  // intend to autoplay later to be "primed" during a real user gesture too.
+  const audioEl = document.getElementById("new-order-audio");
+  if (audioEl) {
+    audioEl
+      .play()
+      .then(() => {
+        audioEl.pause();
+        audioEl.currentTime = 0;
+      })
+      .catch(() => {}); // fine if this fails — the synth fallback still works
+  }
 }
 
-/** A loud, urgent "ring-ring… ring-ring" phone-style alert — synthesized,
- *  no audio file needed, so it always works, including inside the wrapped
- *  Median app. Square-wave trill instead of a soft sine tone, at close to
- *  full volume, repeated twice so it's hard to miss over kitchen noise. */
+/** Plays your custom ring (sounds/new-order.mp3) if it's present and loads
+ *  correctly; otherwise falls back to the synthesized ring below so a
+ *  missing/broken file never silently breaks the alert. */
 function playNewOrderChime() {
+  unlockAudio();
+  const audioEl = document.getElementById("new-order-audio");
+  if (audioEl && audioEl.error === null && audioEl.readyState >= 2) {
+    audioEl.currentTime = 0;
+    audioEl.play().catch(() => playSynthRing());
+  } else {
+    playSynthRing();
+  }
+}
+
+/** Fallback ring — a loud, urgent "ring-ring… ring-ring" phone-style alert,
+ *  synthesized so it works with zero dependencies. Used automatically when
+ *  sounds/new-order.mp3 is missing or fails to load. */
+function playSynthRing() {
   unlockAudio();
   if (!audioCtx) return;
   const now = audioCtx.currentTime;
