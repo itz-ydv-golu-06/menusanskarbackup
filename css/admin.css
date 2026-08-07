@@ -261,6 +261,7 @@ body.admin-body {
 .orders-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px;
 }
+.orders-grid[hidden] { display: none; }
 
 .order-card {
   background: var(--surface-glass); border: 1px solid var(--border-glass);

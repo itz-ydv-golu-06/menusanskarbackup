@@ -1,5 +1,5 @@
 /* ==============================================================
-   menu.css — Sanskar Grand ·
+   menu.css — Sanskar Grand · Full Menu Page
    Builds on the tokens/reset/navbar/footer defined in style.css.
    This file only covers what's unique to the interactive menu:
    the filter bar, dish cards, grid/list toggle and dark mode.
@@ -258,6 +258,7 @@ body.theme-light .btn-gold { color: #221a12; }
   max-width: 420px; margin: 0 auto;
 }
 .sticky-cart-btn:hover { transform: translateY(-2px); }
+.sticky-cart-btn[hidden] { display: none; }
 .sticky-cart-icon { position: relative; font-size: 1.1rem; }
 .sticky-cart-icon .cart-badge { background: var(--maroon-600); box-shadow: 0 0 0 2px var(--gold-500); }
 .sticky-cart-label { flex: 1; text-align: left; }
@@ -305,6 +306,7 @@ body.theme-light .btn-gold { color: #221a12; }
 
 .cart-items { flex: 1; overflow-y: auto; padding: 10px 22px; }
 .cart-empty-state { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: rgba(250,246,236,0.55); padding: 30px; }
+.cart-empty-state[hidden] { display: none; }
 .cart-empty-state .glyph { font-size: 2.4rem; margin-bottom: 12px; }
 
 .cart-line { display: grid; grid-template-columns: 56px 1fr auto; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border-glass); align-items: center; }
@@ -328,6 +330,7 @@ body.theme-light .btn-gold { color: #221a12; }
 
 .cart-summary { padding: 16px 22px 22px; border-top: 1px solid var(--border-glass); flex-shrink: 0; }
 .summary-row { display: flex; justify-content: space-between; font-size: 0.86rem; padding: 5px 0; color: rgba(250,246,236,0.75); }
+.summary-row[hidden] { display: none; }
 .summary-row.summary-grand { font-size: 1.05rem; font-weight: 700; color: var(--gold-300); border-top: 1px solid var(--border-glass); margin-top: 6px; padding-top: 12px; }
 #cart-summary .btn { margin-top: 14px; }
 
@@ -354,6 +357,7 @@ body.theme-light .btn-gold { color: #221a12; }
   border: 2px solid rgba(20,32,29,0.3); border-top-color: var(--ink-900);
   border-radius: 50%; animation: spin 0.7s linear infinite; vertical-align: middle;
 }
+.btn-spinner[hidden] { display: none; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ---- Success view ---- */
