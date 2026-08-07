@@ -15,13 +15,61 @@ document.addEventListener("DOMContentLoaded", () => {
   if (SanskarDB.isLoggedIn()) {
     showDashboard();
   } else {
-    showLogin();
+    showRoleSelect();
   }
   wireLoginForm();
+  wireRoleSelect();
 });
 
 /* ============================================================
-   Login / Logout
+   Role select — routes to either the owner (menu editor) login
+   or straight to the Orders panel, which has its own, separate
+   Firebase Auth sign-in (see orders-admin.js). Staff managing
+   orders never need the owner password below.
+   ============================================================ */
+function wireRoleSelect() {
+  document.getElementById("role-orders-btn")?.addEventListener("click", () => {
+    hideAllShells();
+    document.getElementById("orders-shell").style.display = "block";
+  });
+
+  document.getElementById("role-owner-btn")?.addEventListener("click", () => {
+    if (SanskarDB.isLoggedIn()) {
+      showDashboard();
+    } else {
+      hideAllShells();
+      document.getElementById("login-screen").style.display = "flex";
+    }
+  });
+
+  document.getElementById("owner-back-btn")?.addEventListener("click", () => {
+    showRoleSelect();
+  });
+
+  document.getElementById("orders-shell-back-btn")?.addEventListener("click", () => {
+    showRoleSelect();
+  });
+
+  document.getElementById("admin-orders-link-btn")?.addEventListener("click", () => {
+    hideAllShells();
+    document.getElementById("orders-shell").style.display = "block";
+  });
+}
+
+function hideAllShells() {
+  document.getElementById("role-select").style.display = "none";
+  document.getElementById("login-screen").style.display = "none";
+  document.getElementById("orders-shell").style.display = "none";
+  document.getElementById("admin-shell").style.display = "none";
+}
+
+function showRoleSelect() {
+  hideAllShells();
+  document.getElementById("role-select").style.display = "flex";
+}
+
+/* ============================================================
+   Login / Logout (owner — menu editor only)
    ============================================================ */
 function wireLoginForm() {
   const form = document.getElementById("login-form");
@@ -42,18 +90,18 @@ function wireLoginForm() {
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
       SanskarDB.logout();
-      showLogin();
+      showRoleSelect();
     });
   }
 }
 
 function showLogin() {
+  hideAllShells();
   document.getElementById("login-screen").style.display = "flex";
-  document.getElementById("admin-shell").style.display = "none";
 }
 
 async function showDashboard() {
-  document.getElementById("login-screen").style.display = "none";
+  hideAllShells();
   document.getElementById("admin-shell").style.display = "grid";
   MENU = await SanskarDB.getMenu();
   initSidebarNav();
