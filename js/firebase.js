@@ -99,12 +99,15 @@ export async function placeOrder({ guestName, roomNumber, mobile, note, items })
    Admin side — live orders, status changes, deletion
    ============================================================ */
 
-/** Subscribes to every order, newest first. Returns an unsubscribe fn. */
+/** Subscribes to every order, newest first. Returns an unsubscribe fn.
+ *  onChange receives (orders, docChanges) — docChanges lets callers tell
+ *  a brand-new order apart from a status edit (type "added" vs "modified"),
+ *  which is what the new-order sound/notification alerts key off of. */
 export function listenToOrders(onChange, onError) {
   const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
   return onSnapshot(
     q,
-    (snap) => onChange(snap.docs.map((d) => ({ id: d.id, ...d.data() }))),
+    (snap) => onChange(snap.docs.map((d) => ({ id: d.id, ...d.data() })), snap.docChanges()),
     onError
   );
 }
