@@ -13,6 +13,7 @@ import {
   adminSignOut,
   listenToOrders,
   updateOrderStatus,
+  acknowledgeOrderPing,
   deleteOrder,
 } from "./firebase.js";
 
@@ -161,6 +162,7 @@ function renderOrders() {
       select.disabled = true;
       try {
         await updateOrderStatus(id, select.value);
+        acknowledgeOrderPing(id); // stops the repeating Telegram alert for this order
       } catch (err) {
         console.error(err);
         select.value = prevValue;

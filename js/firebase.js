@@ -21,6 +21,7 @@ import {
   getFirestore,
   collection,
   addDoc,
+  setDoc,
   serverTimestamp,
   onSnapshot,
   query,
@@ -28,6 +29,7 @@ import {
   doc,
   updateDoc,
   deleteDoc,
+  Timestamp,
 } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
 import {
   getAuth,
@@ -92,6 +94,27 @@ export async function placeOrder({ guestName, roomNumber, mobile, note, items })
   };
 
   const ref = await addDoc(collection(db, "orders"), orderPayload);
+
+  // Best-effort "new order" ping for the free Telegram alert script (see
+  // README.md). Uses the SAME id as the order, so acknowledgeOrderPing()
+  // below can flip it off with no query needed. Never blocks or fails the
+  // real order if this write has a problem — the order is already saved.
+  try {
+    const itemsSummary = orderPayload.items.map((i) => `${i.name} x${i.qty}`).join(", ");
+    await setDoc(doc(db, "order_pings", ref.id), {
+      orderId: ref.id,
+      roomNumber: orderPayload.roomNumber,
+      guestName: orderPayload.guestName,
+      summary: itemsSummary,
+      totalAmount: orderPayload.totalAmount,
+      createdAt: serverTimestamp(),
+      expiresAt: Timestamp.fromMillis(Date.now() + 24 * 60 * 60 * 1000), // auto-deleted after 24h via Firestore TTL
+      acknowledged: false, // flips to true the moment admin touches this order's status — see acknowledgeOrderPing()
+    });
+  } catch (err) {
+    console.warn("order_pings write failed (non-fatal):", err);
+  }
+
   return ref.id;
 }
 
@@ -128,6 +151,16 @@ export function listenToOrders(onChange, onError) {
 
 export function updateOrderStatus(orderId, status) {
   return updateDoc(doc(db, "orders", orderId), { status });
+}
+
+/** Silences the repeating Telegram alert for this order (see
+ *  telegram-order-alerts.gs) — call whenever admin takes any action on an
+ *  order, proving a human has seen it. Best-effort: never throws, since a
+ *  failed silence shouldn't block the real status update that triggered it. */
+export function acknowledgeOrderPing(orderId) {
+  return updateDoc(doc(db, "order_pings", orderId), { acknowledged: true }).catch((err) => {
+    console.warn("acknowledgeOrderPing failed (non-fatal):", err);
+  });
 }
 
 export function deleteOrder(orderId) {
