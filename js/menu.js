@@ -66,6 +66,16 @@ function recordOrderTimestamp() {
   localStorage.setItem(ORDER_RATE_LIMIT_KEY, JSON.stringify(recent.slice(-10)));
 }
 
+/** Turns a caught error into short, readable on-screen debug text —
+ *  temporary aid for diagnosing device-specific load failures without
+ *  needing dev tools access (e.g. debugging on an iPhone). */
+function escapeErrorText(err) {
+  const raw = (err && (err.message || err.name || String(err))) || "unknown error";
+  return String(raw).replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[c]));
+}
+
 let ALL_MENU = null;         // full { restaurant, categories, items }
 let activeCategory = "all";
 let activeSearch = "";
@@ -86,7 +96,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (err) {
     console.error(err);
     document.getElementById("menu-grid").innerHTML =
-      `<div class="empty-state"><div class="glyph">⚠️</div><p>Could not load the menu right now. Please refresh.</p></div>`;
+      `<div class="empty-state"><div class="glyph">⚠️</div><p>Could not load the menu right now. Please refresh.</p><p style="opacity:0.6;font-size:0.75rem;margin-top:10px;word-break:break-word;">Debug info: ${escapeErrorText(err)}</p></div>`;
     return;
   }
 
