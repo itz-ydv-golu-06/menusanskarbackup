@@ -79,20 +79,35 @@ const SanskarDB = (() => {
       }
     }
     const fresh = await fetchDefaultMenu();
-    localStorage.setItem(KEYS.MENU, JSON.stringify(fresh));
+    trySaveMenu(fresh);
     return fresh;
   }
 
-  /** Persist a full menu object back into localStorage. */
+  /** Persist a full menu object back into localStorage.
+   *  The menu (with embedded base64 photos) can be several MB, which
+   *  exceeds Safari/iOS's localStorage quota (often ~5MB, sometimes far
+   *  less in Private Browsing or Low Power Mode). A failed write here
+   *  must never break the page — it just means this device won't get
+   *  the offline/instant-load cache for this visit. */
+  function trySaveMenu(menuData) {
+    try {
+      localStorage.setItem(KEYS.MENU, JSON.stringify(menuData));
+      return true;
+    } catch (err) {
+      console.warn("Could not cache menu in localStorage (quota?). Continuing without cache.", err);
+      try { localStorage.removeItem(KEYS.MENU); } catch {}
+      return false;
+    }
+  }
   function saveMenu(menuData) {
-    localStorage.setItem(KEYS.MENU, JSON.stringify(menuData));
+    trySaveMenu(menuData);
   }
 
   /** Wipe the cached menu so the next getMenu() re-reads menu.json. */
   async function resetMenu() {
     localStorage.removeItem(KEYS.MENU);
     const fresh = await fetchDefaultMenu();
-    localStorage.setItem(KEYS.MENU, JSON.stringify(fresh));
+    trySaveMenu(fresh);
     return fresh;
   }
 
