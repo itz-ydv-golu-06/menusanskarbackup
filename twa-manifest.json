@@ -1,0 +1,40 @@
+{
+  "packageId": "com.sanskargrand.stafforders",
+  "host": "itz-ydv-golu-06.github.io",
+  "name": "Sanskar Grand — Staff Orders",
+  "launcherName": "SG Orders",
+  "display": "standalone",
+  "themeColor": "#121216",
+  "navigationColor": "#121216",
+  "navigationColorDark": "#121216",
+  "backgroundColor": "#121216",
+  "backgroundColorDark": "#121216",
+  "startUrl": "/menusanskarbackup/admin.html",
+  "iconUrl": "https://itz-ydv-golu-06.github.io/menusanskarbackup/icons/icon-512.png",
+  "maskableIconUrl": "https://itz-ydv-golu-06.github.io/menusanskarbackup/icons/icon-maskable-512.png",
+  "shortcuts": [],
+  "signingKey": {
+    "path": "./android.keystore",
+    "alias": "sg-staff"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "webManifestUrl": "https://itz-ydv-golu-06.github.io/menusanskarbackup/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {
+    "locationDelegation": { "enabled": false },
+    "playBilling": { "enabled": false }
+  },
+  "enableNotifications": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://itz-ydv-golu-06.github.io/menusanskarbackup/",
+  "minSdkVersion": 21,
+  "orientation": "portrait",
+  "fingerprints": [
+    { "name": "Release key (generated for this project)", "value": "DC:E7:03:BE:02:44:2C:51:F7:C2:E5:E0:40:BC:BF:75:A6:92:CC:D4:73:08:58:AD:D8:FE:C4:DD:EA:D3:05:35" }
+  ],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "generatorApp": "cli"
+}

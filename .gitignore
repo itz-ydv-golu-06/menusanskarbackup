@@ -1,0 +1,16 @@
+# Local Bubblewrap/TWA build output — never commit these.
+# The GitHub Actions workflow (.github/workflows/build-apk.yml) generates
+# them fresh in the cloud from twa-manifest.json on every build.
+android.keystore
+*.keystore
+*.jks
+app/
+build/
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+manifest-checksum.txt
+*.apk
+*.aab
+node_modules/

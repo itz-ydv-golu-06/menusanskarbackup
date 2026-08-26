@@ -141,3 +141,46 @@ by room or guest name, filter by status, change status from the dropdown
   export when done.
 - **Contact details, WhatsApp number, map:** search `index.html` and `menu.html`
   for `+919000000000` and the Google Maps `<iframe>` and replace with your real details.
+
+## Staff Orders App (Android APK)
+
+`admin.html` can be installed on the front-desk phone/tablet as a real app
+icon (not just a bookmark), and it plays a chime + shows a device
+notification the moment a new order comes in — as long as the app is open
+(screen on, or backgrounded but not force-closed). This works because
+`orders-admin.js` already listens to Firestore live and calls the browser's
+Notification API on every new order.
+
+**What this is NOT:** a "phone locked, app fully closed" push notification.
+That would need a server (Firebase Cloud Function on the paid Blaze plan) to
+push through Firebase Cloud Messaging even when nothing is running on the
+device. This setup is the simpler, no-billing version — the front desk keeps
+the app open at the desk, same as the browser tab does today.
+
+### One-time setup
+
+1. **Add three repo secrets** — GitHub repo → Settings → Secrets and
+   variables → Actions → New repository secret:
+   - `SG_KEYSTORE_BASE64` — the app's signing key (given to you separately;
+     keep it safe, it's what lets future updates install over the old app
+     instead of requiring a reinstall).
+   - `SG_KEYSTORE_PASSWORD`
+   - `SG_KEY_PASSWORD`
+2. Push to `main` (or go to the **Actions** tab → **Build Staff Orders APK**
+   → **Run workflow**).
+3. When the run finishes, open it and download the `sg-staff-orders-apk`
+   artifact (a zip containing `app-release-signed.apk`).
+4. On the staff phone: unzip, open the `.apk` (Android will ask to allow
+   installs from this source the first time), install, open once, and grant
+   the notification permission when asked.
+
+### Known limitation — no "verified" app (thin address bar)
+
+A fully "looks like a real app, no address bar" install requires hosting a
+`.well-known/assetlinks.json` file at the **domain root**
+(`itz-ydv-golu-06.github.io/.well-known/...`), which needs control of the
+`itz-ydv-golu-06.github.io` user-site repo specifically — not
+`menusanskarbackup`. Without it, Android shows a thin Chrome address bar at
+the top of the app. Everything else (icon, notifications, standalone window)
+works the same. If you later create that user-site repo, this can be
+upgraded to fully verified with no other changes.
