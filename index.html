@@ -1,403 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sanskar Grand by Maan | Luxury Dining & Stay in Jaipur</title>
-<meta name="description" content="Sanskar Grand by Maan — a premium dining and stay experience on the 200 Feet Bypass Road, Jaipur. Explore our menu, book a table, and taste refined Indian, Chinese and continental cuisine." />
-<meta name="keywords" content="Sanskar Grand, restaurant Jaipur, Maan hotel restaurant, fine dining Jaipur, veg restaurant Panchyawala" />
-<meta name="author" content="Sanskar Grand by Maan" />
-<link rel="canonical" href="https://sanskargrand.example.com/" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanskar Grand by Maan | Luxury Vegetarian Dining &amp; Stay • Jaipur</title>
+  <meta name="description" content="Experience refined 100% vegetarian fine dining and elegant stays at Sanskar Grand by Maan on Jaipur's 200 Feet Bypass Road.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@300;400;500&amp;display=swap');
+    
+    :root {
+      --gold: #c5a26f;
+    }
+    
+    body {
+      font-family: 'Inter', system_ui, sans-serif;
+    }
+    
+    .heading-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700;
+    }
 
-<!-- Open Graph -->
-<meta property="og:type" content="restaurant.menu" />
-<meta property="og:title" content="Sanskar Grand by Maan | Luxury Dining in Jaipur" />
-<meta property="og:description" content="A refined, all-vegetarian menu served in a premium hotel setting on Jaipur's 200 Feet Bypass Road." />
-<meta property="og:image" content="images/hero-hotel.jpg" />
+    .luxury-gradient {
+      background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+    }
 
-<link rel="icon" href="icons/favicon.svg" type="image/svg+xml" />
+    .gold-text {
+      color: #c5a26f;
+    }
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Cormorant+Garamond:ital@1&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    .section-header {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-header:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(to right, #c5a26f, transparent);
+    }
 
-<link rel="stylesheet" href="css/style.css" />
+    .nav-active {
+      color: #c5a26f;
+      font-weight: 500;
+    }
 
-<!-- Structured data for SEO -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "name": "Sanskar Grand by Maan",
-  "servesCuisine": ["Indian", "Chinese", "Continental"],
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "310, 200 Feet Bypass Road, Nemi Nagar Extension, Panchyawala",
-    "addressLocality": "Jaipur",
-    "addressRegion": "Rajasthan",
-    "postalCode": "302024",
-    "addressCountry": "IN"
-  },
-  "servesCuisine": "Indian",
-  "priceRange": "₹₹",
-  "email": "sanskar@thecountryinn.com"
-}
-</script>
+    .dish-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .dish-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+    }
+
+    .hero-bg {
+      background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.75)), url('https://picsum.photos/id/1018/2000/1200');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .gallery-img {
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-img:hover {
+      transform: scale(1.08);
+    }
+
+    .nav-scrolled {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+    }
+
+    .stat-number {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
 </head>
-<body>
+<body class="bg-slate-950 text-slate-200">
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+    <div class="max-w-screen-2xl mx-auto">
+      <div class="px-8 py-5 flex items-center justify-between">
+        <div class="flex items-center gap-x-3">
+          <div class="w-11 h-11 bg-amber-900 rounded-2xl flex items-center justify-center">
+            <i class="fa-solid fa-utensils text-3xl text-amber-300"></i>
+          </div>
+          <div>
+            <div class="font-bold text-2xl tracking-tight">Sanskar Grand</div>
+            <div class="text-[10px] text-amber-400 -mt-1">BY MAAN • JAIPUR</div>
+          </div>
+        </div>
 
-<!-- ==================== Loading Screen ==================== -->
-<div id="loading-screen" aria-hidden="true">
-  <img src="images/logo.png" alt="Sanskar Grand Logo" class="loader-logo">
-  <p class="loader-text">Setting the table…</p>
-</div>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-x-9 text-sm">
+          <a href="#about" class="hover:text-amber-400 transition-colors">Our Story</a>
+          <a href="#rooms" class="hover:text-amber-400 transition-colors">Rooms</a>
+          <a href="#menu" class="hover:text-amber-400 transition-colors">Menu</a>
+          <a href="#gallery" class="hover:text-amber-400 transition-colors">Gallery</a>
+          <a href="#reviews" class="hover:text-amber-400 transition-colors">Reviews</a>
+        </div>
 
-<!-- ==================== Navbar ==================== -->
-<header class="navbar" id="navbar">
-  <div class="container nav-inner">
-    <a href="index.html" class="brand">
-      <span class="brand-mark"><img src="images/logo.png" alt="Sanskar Grand logo" class="brand-logo-img" onerror="this.style.display='none'"><span class="brand-fallback"></span></span>
-      <span>Sanskar Grand<em>By Maan</em></span>
-    </a>
+        <div class="flex items-center gap-x-3">
+          <a href="https://wa.me/919799341599" target="_blank"
+             class="hidden md:flex items-center gap-x-2 px-5 py-2.5 text-sm font-medium border border-white/20 hover:bg-white/5 rounded-3xl transition-all">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Chat on WhatsApp</span>
+          </a>
+          
+          <a href="#contact" 
+             class="px-6 py-2.5 bg-amber-600 hover:bg-amber-500 transition-all text-white text-sm font-semibold rounded-3xl flex items-center gap-x-2">
+            <span>Reserve Now</span>
+          </a>
 
-    <nav class="nav-links" id="nav-links">
-      <a href="index.html#about">About</a>
-      <a href="index.html#rooms">Rooms</a>
-      <a href="index.html#specials">Specials</a>
-      <a href="index.html#categories">Categories</a>
-      <a href="index.html#gallery">Gallery</a>
-      <a href="index.html#reviews">Reviews</a>
-      <a href="index.html#contact">Contact</a>
-      <a href="menu.html">Full Menu</a>
-    </nav>
-
-    <div class="nav-cta">
-      <a href="menu.html" class="btn btn-outline">View Menu</a>
-      <a href="tel:+919799341599" class="btn btn-gold">Reserve</a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
-        <span></span><span></span><span></span>
-      </button>
+          <!-- Mobile Menu -->
+          <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
     </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-bg min-h-[100dvh] flex items-center pt-16 relative">
+    <div class="max-w-screen-2xl mx-auto px-8 pt-12 pb-20">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-3xl bg-white/10 backdrop-blur-md text-sm mb-6">
+          <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+          <span class="font-medium">Open Daily • 7 AM – 11 PM</span>
+        </div>
+        
+        <h1 class="text-7xl md:text-8xl leading-[0.95] tracking-tighter font-bold heading-serif">
+          Where Every<br>Plate Tells a<br><span class="gold-text">Grand Story</span>
+        </h1>
+        
+        <p class="mt-6 max-w-md text-xl text-slate-300">
+          100% pure vegetarian fine dining inside Sanskar Grand Hotel, Jaipur.
+        </p>
+        
+        <div class="flex flex-wrap gap-4 mt-9">
+          <a href="#menu" 
+             class="px-8 py-4 bg-white text-slate-900 hover:bg-amber-100 transition-all font-semibold text-lg rounded-3xl flex items-center gap-x-3">
+            Explore the Menu
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#contact" 
+             class="px-8 py-4 border border-white/30 hover:bg-white/10 transition-all font-semibold text-lg rounded-3xl flex items-center gap-x-3">
+            Book a Table
+          </a>
+        </div>
+        
+        <div class="flex gap-x-10 mt-14 text-sm">
+          <div>
+            <div class="text-4xl font-semibold text-white">90+</div>
+            <div class="text-amber-400">Signature Dishes</div>
+          </div>
+          <div>
+            <div class="text-4xl font-semibold text-white">100%</div>
+            <div class="text-amber-400">Vegetarian</div>
+          </div>
+          <div>
+            <div class="text-4xl font-semibold text-white">7AM–11PM</div>
+            <div class="text-amber-400">Daily Service</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-xs tracking-[3px]">
+      <div>SCROLL TO DISCOVER</div>
+      <i class="fa-solid fa-chevron-down mt-1 animate-bounce"></i>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="max-w-screen-2xl mx-auto px-8 py-20">
+    <div class="grid md:grid-cols-12 gap-12 items-center">
+      <div class="md:col-span-7">
+        <div class="uppercase tracking-[3px] text-xs text-amber-400 mb-3">EST. IN JAIPUR</div>
+        <h2 class="heading-serif text-6xl leading-none">A legacy of<br>hospitality &amp;<br>refined taste.</h2>
+      </div>
+      <div class="md:col-span-5 text-lg text-slate-300">
+        Nestled within Sanskar Grand on the 200 Feet Bypass Road, our kitchen blends home-style Indian cooking with luxury hotel finesse. Every dish is 100% vegetarian and prepared with the same care for in-room dining or our elegant dining room.
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14">
+      <div class="bg-slate-900 p-6 rounded-3xl">
+        <i class="fa-solid fa-leaf text-3xl text-emerald-400 mb-4"></i>
+        <div class="font-semibold">Pure Vegetarian Kitchen</div>
+      </div>
+      <div class="bg-slate-900 p-6 rounded-3xl">
+        <i class="fa-solid fa-bed text-3xl text-emerald-400 mb-4"></i>
+        <div class="font-semibold">In-Room Dining Available</div>
+      </div>
+      <div class="bg-slate-900 p-6 rounded-3xl">
+        <i class="fa-solid fa-receipt text-3xl text-emerald-400 mb-4"></i>
+        <div class="font-semibold">GST-Inclusive Pricing</div>
+      </div>
+      <div class="bg-slate-900 p-6 rounded-3xl">
+        <i class="fa-solid fa-clock text-3xl text-emerald-400 mb-4"></i>
+        <div class="font-semibold">Open 7 AM – 11 PM</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rooms -->
+  <section id="rooms" class="bg-slate-900 py-20">
+    <div class="max-w-screen-2xl mx-auto px-8">
+      <div class="text-center mb-12">
+        <div class="text-amber-400 text-xs tracking-[3px]">STAY WITH US</div>
+        <h2 class="heading-serif text-6xl mt-2">Elegant Rooms<br>Above the Restaurant</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Room Cards -->
+        <div class="bg-slate-950 rounded-3xl overflow-hidden border border-white/10">
+          <div class="h-64 bg-[url('https://picsum.photos/id/1015/800/600')] bg-cover"></div>
+          <div class="p-8">
+            <div class="font-semibold text-2xl">Deluxe Room</div>
+            <p class="text-slate-400 mt-2">Spacious queen bed, work desk &amp; city views.</p>
+            <a href="https://www.booking.com/searchresults.html?ss=Sanskar%20Grand%20by%20Maan%2C%20Jaipur" target="_blank"
+               class="mt-6 inline-block px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white rounded-2xl text-sm font-medium w-full text-center">Book on Booking.com →</a>
+          </div>
+        </div>
+        
+        <div class="bg-slate-950 rounded-3xl overflow-hidden border border-white/10">
+          <div class="h-64 bg-[url('https://picsum.photos/id/160/800/600')] bg-cover"></div>
+          <div class="p-8">
+            <div class="font-semibold text-2xl">Super Deluxe Room</div>
+            <p class="text-slate-400 mt-2">Extra living space + private balcony.</p>
+            <a href="https://www.booking.com/searchresults.html?ss=Sanskar%20Grand%20by%20Maan%2C%20Jaipur" target="_blank"
+               class="mt-6 inline-block px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white rounded-2xl text-sm font-medium w-full text-center">Book on Booking.com →</a>
+          </div>
+        </div>
+        
+        <div class="bg-slate-950 rounded-3xl overflow-hidden border border-white/10">
+          <div class="h-64 bg-[url('https://picsum.photos/id/201/800/600')] bg-cover"></div>
+          <div class="p-8">
+            <div class="font-semibold text-2xl">Executive Suite</div>
+            <p class="text-slate-400 mt-2">Separate seating area — perfect for longer stays.</p>
+            <a href="https://www.booking.com/searchresults.html?ss=Sanskar%20Grand%20by%20Maan%2C%20Jaipur" target="_blank"
+               class="mt-6 inline-block px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white rounded-2xl text-sm font-medium w-full text-center">Book on Booking.com →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Teaser -->
+  <section id="menu" class="max-w-screen-2xl mx-auto px-8 py-20">
+    <div class="text-center mb-12">
+      <div class="text-amber-400 text-xs tracking-[3px]">CURATED BY OUR CHEFS</div>
+      <h2 class="heading-serif text-6xl mt-2">Signature Dishes</h2>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="dish-card bg-slate-900 p-8 rounded-3xl">
+        <div class="text-5xl mb-6">🥘</div>
+        <div class="font-semibold text-2xl">Dal Makhani</div>
+        <p class="text-slate-400 mt-1">Slow-cooked, buttery &amp; unforgettable</p>
+        <div class="mt-6 text-amber-400 font-medium">Chef’s Special</div>
+      </div>
+      <div class="dish-card bg-slate-900 p-8 rounded-3xl">
+        <div class="text-5xl mb-6">🍛</div>
+        <div class="font-semibold text-2xl">Paneer Tikka</div>
+        <p class="text-slate-400 mt-1">Tandoor-fresh with house spices</p>
+        <div class="mt-6 text-amber-400 font-medium">Best Seller</div>
+      </div>
+      <div class="dish-card bg-slate-900 p-8 rounded-3xl">
+        <div class="text-5xl mb-6">🫓</div>
+        <div class="font-semibold text-2xl">Butter Naan + Dal</div>
+        <p class="text-slate-400 mt-1">Classic comfort done right</p>
+        <div class="mt-6 text-amber-400 font-medium">Guest Favourite</div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-10">
+      <a href="menu.html" class="inline-flex items-center gap-x-2 text-lg font-medium hover:text-amber-400 transition-colors">
+        View Full Interactive Menu <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="bg-slate-900 py-20">
+    <div class="max-w-screen-2xl mx-auto px-8">
+      <div class="text-center mb-10">
+        <div class="text-amber-400 text-xs tracking-[3px]">A GLIMPSE INSIDE</div>
+        <h2 class="heading-serif text-6xl">Our Gallery</h2>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div onclick="showLightbox(this)" class="gallery-img aspect-square bg-[url('https://picsum.photos/id/1018/600/600')] bg-cover rounded-3xl cursor-pointer"></div>
+        <div onclick="showLightbox(this)" class="gallery-img aspect-square bg-[url('https://picsum.photos/id/160/600/600')] bg-cover rounded-3xl cursor-pointer"></div>
+        <div onclick="showLightbox(this)" class="gallery-img aspect-square bg-[url('https://picsum.photos/id/201/600/600')] bg-cover rounded-3xl cursor-pointer"></div>
+        <div onclick="showLightbox(this)" class="gallery-img aspect-square bg-[url('https://picsum.photos/id/251/600/600')] bg-cover rounded-3xl cursor-pointer"></div>
+        <div onclick="showLightbox(this)" class="gallery-img aspect-square bg-[url('https://picsum.photos/id/292/600/600')] bg-cover rounded-3xl cursor-pointer"></div>
+        <div onclick="showLightbox(this)" class="gallery-img aspect-square bg-[url('https://picsum.photos/id/312/600/600')] bg-cover rounded-3xl cursor-pointer"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="max-w-screen-2xl mx-auto px-8 py-20">
+    <div class="text-center mb-12">
+      <div class="text-amber-400 text-xs tracking-[3px]">WORD OF MOUTH</div>
+      <h2 class="heading-serif text-6xl">What Our Guests Say</h2>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-slate-900 p-8 rounded-3xl">
+        <div class="flex text-amber-400 text-xl mb-4">★★★★★</div>
+        <p class="italic">"The dal makhani tastes exactly like it should — slow-cooked, buttery, unforgettable."</p>
+        <div class="mt-6 font-medium">— Riya Sharma, Jaipur</div>
+      </div>
+      <div class="bg-slate-900 p-8 rounded-3xl">
+        <div class="flex text-amber-400 text-xl mb-4">★★★★★</div>
+        <p class="italic">"Stayed at the hotel and ordered in-room dining every night. The paneer tikka alone is worth the visit."</p>
+        <div class="mt-6 font-medium">— Aman Verma, Delhi</div>
+      </div>
+      <div class="bg-slate-900 p-8 rounded-3xl">
+        <div class="flex text-amber-400 text-xl mb-4">★★★★★</div>
+        <p class="italic">"Elegant setting, warm staff, and a genuinely well-designed vegetarian menu."</p>
+        <div class="mt-6 font-medium">— Priya Nair, Jaipur</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Footer -->
+  <section id="contact" class="bg-slate-950 border-t border-white/10 py-20">
+    <div class="max-w-screen-2xl mx-auto px-8 text-center">
+      <h2 class="heading-serif text-6xl">Visit Us</h2>
+      <p class="mt-4 text-xl text-slate-300 max-w-md mx-auto">310, 200 Feet Bypass Road, Nemi Nagar Extension, Panchyawala, Jaipur, Rajasthan 302024</p>
+      
+      <div class="flex justify-center gap-x-4 mt-8">
+        <a href="tel:+919799341599" class="px-8 py-4 border border-white/20 rounded-3xl flex items-center gap-x-3 hover:bg-white/5 transition-all">
+          <i class="fa-solid fa-phone"></i> <span>+91 97993 41599</span>
+        </a>
+        <a href="mailto:sanskargrandbymaan@gmail.com" class="px-8 py-4 border border-white/20 rounded-3xl flex items-center gap-x-3 hover:bg-white/5 transition-all">
+          <i class="fa-solid fa-envelope"></i> <span>Email Us</span>
+        </a>
+      </div>
+      
+      <div class="mt-10 text-xs text-slate-500">
+        © Sanskar Grand by Maan • All Rights Reserved
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/919799341599" target="_blank"
+     class="fixed bottom-8 right-8 bg-emerald-600 hover:bg-emerald-500 w-14 h-14 flex items-center justify-center rounded-full shadow-xl text-3xl z-50">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Lightbox -->
+  <div id="lightbox" onclick="hideLightbox()" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4">
+    <img id="lightbox-img" class="max-h-[90vh] max-w-[95vw] rounded-3xl shadow-2xl" alt="">
   </div>
-</header>
 
-<!-- ==================== Hero ==================== -->
-<section class="hero">
-  <div class="hero-parallax-layer" aria-hidden="true"></div>
-  <div class="container hero-inner">
-    <div class="hero-copy">
-      <p class="eyebrow">By Maan · Jaipur</p>
-      <h1 class="hero-title">
-        <span class="line"><span>Where Every Plate</span></span>
-        <span class="line"><span>Tells a Grand Story</span></span>
-      </h1>
-      <p class="hero-desc">
-        Sanskar Grand brings together the warmth of home-style Indian cooking, the finesse
-        of a luxury hotel kitchen, and a wholly vegetarian menu crafted to be remembered.
-      </p>
-      <div class="hero-actions">
-        <a href="menu.html" class="btn btn-gold">Explore Full Menu</a>
-        <a href="#contact" class="btn btn-outline">Book a Table</a>
-      </div>
-      <div class="hero-stats">
-        <div><strong>90+</strong><span>Signature Dishes</span></div>
-        <div><strong>100%</strong><span>Pure Vegetarian</span></div>
-        <div><strong>7AM–11PM</strong><span>Daily Service</span></div>
-      </div>
-    </div>
-
-    <div class="hero-visual" aria-hidden="true">
-      <div class="hero-card card-back">
-        <div class="plate-placeholder" style="aspect-ratio:4/3;border-radius:14px;"><span>🍛</span></div>
-        <span class="tag">Rooms</span>
-        <h4>super deluxe</h4>
-        <p>fully equiped</p>
-      </div>
-      <div class="hero-card card-front">
-        <div class="hotel" style="aspect-ratio:4/3;border-radius:14px;"><span>🍮</span></div>
-        <span class="tag">Sanskar Grand</span>
-        <h4>hotel Front</h4>
-        <p>serve luxury</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="scroll-cue"><span>Scroll</span><span class="stick"></span></div>
-</section>
-
-<div class="torn-divider" aria-hidden="true">
-  <svg viewBox="0 0 1200 90" preserveAspectRatio="none"><path d="M0,10 L60,30 L130,5 L200,35 L270,12 L340,40 L410,8 L480,32 L550,14 L620,38 L690,10 L760,34 L830,6 L900,30 L970,12 L1040,36 L1110,10 L1200,28 L1200,90 L0,90 Z" fill="#2f6f6b"></path></svg>
-</div>
-
-<!-- ==================== About ==================== -->
-<section class="about" id="about">
-  <div class="container about-grid">
-    <div class="about-media reveal">
-      <div class="plate-placeholder" style="height:100%;"><span style="font-size:4rem;">🏛️</span></div>
-      <div class="badge-float">
-        <strong>Since Day One</strong>
-        <span>A Legacy of Hospitality</span>
-      </div>
-    </div>
-    <div class="about-copy reveal reveal-delay-1">
-      <p class="eyebrow">Our Story</p>
-      <h2 class="section-title">A <em>grand</em> Room inside a premium stay</h2>
-      <p>
-        Set within the Sanskar Grand hotel on Jaipur's 200 Feet Bypass Road, our kitchen
-        serves guests and city diners alike — from hearty Indian breakfasts to slow-cooked
-        dal makhani and tandoor-fresh breads, right through to late-night comfort food.
-      </p>
-      <p>
-        Every dish on our menu is 100% vegetarian, prepared with the same care whether it
-        reaches a hotel room or a table in our dining room.
-      </p>
-      <ul class="about-list">
-        <li>Pure Vegetarian Kitchen</li>
-        <li>In-Room Dining Available</li>
-        <li>GST-Inclusive Billing</li>
-        <li>Open 7:00 AM – 11:00 PM</li>
-      </ul>
-      <a href="menu.html" class="btn btn-gold">See What's Cooking</a>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== Rooms & Booking ==================== -->
-<section class="rooms" id="rooms">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Stay With Us</p>
-      <h2 class="section-title">Our <em>Rooms</em></h2>
-      <p class="section-sub" style="margin:0 auto;">Comfortable, well-appointed rooms right above the restaurant. Reserve your stay through our booking partner.</p>
-    </div>
-
-    <div class="spotlight-track">
-      <div class="dish-card reveal">
-        <div class="dish-media">
-          <span class="ribbon">Most Popular</span>
-          <div class="plate-placeholder"><span>🛏️</span></div>
+  <script>
+    // Tailwind script
+    function initializeTailwind() {
+      document.documentElement.style.setProperty('--accent', '#c5a26f');
+    }
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('nav-scrolled', 'shadow-xl');
+      } else {
+        nav.classList.remove('nav-scrolled', 'shadow-xl');
+      }
+    });
+    
+    // Mobile menu
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    mobileBtn.addEventListener('click', () => {
+      const nav = document.createElement('div');
+      nav.className = 'fixed inset-0 bg-slate-950/95 z-[200] flex flex-col p-8 text-2xl';
+      nav.innerHTML = `
+        <div class="flex justify-end"><button class="text-4xl">×</button></div>
+        <div class="flex flex-col gap-y-6 mt-10 text-center">
+          <a href="#about" class="py-3">Our Story</a>
+          <a href="#rooms" class="py-3">Rooms</a>
+          <a href="#menu" class="py-3">Menu</a>
+          <a href="#gallery" class="py-3">Gallery</a>
+          <a href="#reviews" class="py-3">Reviews</a>
+          <a href="#contact" class="py-3 text-amber-400">Reserve Now</a>
         </div>
-        <div class="dish-body">
-          <h4>Deluxe Room</h4>
-          <p>Spacious and bright, with a plush queen bed, work desk, and city views.</p>
-          <a href="https://www.booking.com/searchresults.html?ss=Sanskar%20Grand%20by%20Maan%2C%20Jaipur" target="_blank" rel="noopener" class="btn btn-gold btn-block" style="margin-top:16px;">Book Now ↗</a>
-        </div>
-      </div>
-      <div class="dish-card reveal reveal-delay-1">
-        <div class="dish-media">
-          <div class="plate-placeholder"><span>🛌</span></div>
-        </div>
-        <div class="dish-body">
-          <h4>Super Deluxe Room</h4>
-          <p>Extra living space, premium furnishings, and a private sit-out balcony.</p>
-          <a href="https://www.booking.com/searchresults.html?ss=Sanskar%20Grand%20by%20Maan%2C%20Jaipur" target="_blank" rel="noopener" class="btn btn-gold btn-block" style="margin-top:16px;">Book Now ↗</a>
-        </div>
-      </div>
-      <div class="dish-card reveal reveal-delay-2">
-        <div class="dish-media">
-          <div class="plate-placeholder"><span>🏨</span></div>
-        </div>
-        <div class="dish-body">
-          <h4>Executive Suite</h4>
-          <p>Our largest room, with a separate seating area — ideal for longer stays.</p>
-          <a href="https://www.booking.com/searchresults.html?ss=Sanskar%20Grand%20by%20Maan%2C%20Jaipur" target="_blank" rel="noopener" class="btn btn-gold btn-block" style="margin-top:16px;">Book Now ↗</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="video-tour reveal">
-      <div class="video-tour-media plate-placeholder">
-        <span class="play-glyph">▶</span>
-      </div>
-      <div class="video-tour-copy">
-        <h3>Take a Video Tour</h3>
-        <p>A short walkthrough of our rooms and property — coming soon. This card is ready for you to drop in a real video whenever you have one.</p>
-      </div>
-    </div>
-
-    <div class="section-cta reveal">
-      <a href="https://www.booking.com/searchresults.html?ss=Sanskar%20Grand%20by%20Maan%2C%20Jaipur" target="_blank" rel="noopener" class="btn btn-outline">View All Rooms & Book on Booking.com →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== Chef Special ==================== -->
-<section class="spotlight" id="specials">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Curated by the Kitchen</p>
-      <h2 class="section-title">Chef's <em>Special</em> Selections</h2>
-      <p class="section-sub" style="margin:0 auto;">Dishes our chefs are proudest to send out of the kitchen.</p>
-    </div>
-    <div class="spotlight-track" id="chef-special-grid">
-      <!-- populated by app.js from data/menu.json -->
-    </div>
-  </div>
-</section>
-
-<!-- ==================== Best Seller ==================== -->
-<section class="spotlight" style="background:var(--navy-800);">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Guest Favourites</p>
-      <h2 class="section-title">Our <em>Best Sellers</em></h2>
-      <p class="section-sub" style="margin:0 auto;">The dishes our guests keep coming back for.</p>
-    </div>
-    <div class="spotlight-track" id="best-seller-grid">
-      <!-- populated by app.js -->
-    </div>
-    <div class="section-cta reveal">
-      <a href="menu.html" class="btn btn-outline">Browse the Entire Menu →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== Gallery ==================== -->
-<section class="gallery" id="gallery">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">A Glimpse Inside</p>
-      <h2 class="section-title">Our <em>Gallery</em></h2>
-    </div>
-    <div class="gallery-grid">
-      <figure class="reveal"><div class="ourhotel" style="height:100%;"><span>🏨</span></div><figcaption>our hotel at night</figcaption></figure>
-      <figure class="reveal reveal-delay-1"><div class="restorant" style="height:100%;"><span>🍛</span></div><figcaption>restorant</figcaption></figure>
-      <figure class="reveal reveal-delay-2"><div class="ourteam" style="height:100%;"><span>🥘</span></div><figcaption> Staff</figcaption></figure>
-      <figure class="reveal reveal-delay-3"><div class="ourrooms" style="height:100%;"><span>🍽️</span></div><figcaption>The Dining Room</figcaption></figure>
-      <figure class="reveal"><div class="banquete" style="height:100%;"><span>🫓</span></div><figcaption>Our banquete</figcaption></figure>
-      <figure class="reveal reveal-delay-1"><div class="chef" style="height:100%;"><span>🍮</span></div><figcaption>Trenned chef</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== Reviews ==================== -->
-<section class="reviews" id="reviews">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Word of Mouth</p>
-      <h2 class="section-title">What Our <em>Guests</em> Say</h2>
-    </div>
-    <div class="review-track">
-      <div class="review-card reveal">
-        <div class="stars">★★★★★</div>
-        <p>"The dal makhani tastes exactly like it should — slow-cooked, buttery, unforgettable. Service matched the food."</p>
-        <div class="review-person">
-          <div class="review-avatar">R</div>
-          <div><strong>Riya Sharma</strong><span>Jaipur</span></div>
-        </div>
-      </div>
-      <div class="review-card reveal reveal-delay-1">
-        <div class="stars">★★★★★</div>
-        <p>"Stayed at the hotel and ordered in-room dining every night. The paneer tikka alone is worth the visit."</p>
-        <div class="review-person">
-          <div class="review-avatar">A</div>
-          <div><strong>Aman Verma</strong><span>Delhi</span></div>
-        </div>
-      </div>
-      <div class="review-card reveal reveal-delay-2">
-        <div class="stars">★★★★★</div>
-        <p>"Elegant setting, warm staff, and a genuinely well-designed vegetarian menu. Our go-to for family dinners."</p>
-        <div class="review-person">
-          <div class="review-avatar">P</div>
-          <div><strong>Priya Nair</strong><span>Jaipur</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== Contact ==================== -->
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Visit Us</p>
-      <h2 class="section-title">Book Your <em>room</em></h2>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-info reveal">
-        <div class="info-row">
-          <div class="icon-badge">📍</div>
-          <div><h5>Address</h5><p>310, 200 Feet Bypass Road, Nemi Nagar Extension, Panchyawala, Jaipur, Rajasthan 302024</p></div>
-        </div>
-        <div class="info-row">
-          <div class="icon-badge">🕒</div>
-          <div><h5>Timings</h5><p>Restaurant & Room Service: 7:00 AM – 11:00 PM · Last order 10:30 PM</p></div>
-        </div>
-        <div class="info-row">
-          <div class="icon-badge">✉️</div>
-          <div><h5>Email</h5><a href="mailto:sanskargrandbymaan@gmail.com">sanskargrandbymaan@gmail.com</a></div>
-        </div>
-        <div class="info-row">
-          <div class="icon-badge">📞</div>
-          <div><h5>Phone</h5><a href="tel:+919799341599">+919799341599</a></div>
-        </div>
-      </div>
-      <div class="map-wrap reveal reveal-delay-1">
-        <iframe
-          title="Sanskar Grand location map"
-          src="https://www.google.com/maps?q=sanskar+grand+by+maan+Panchyawala,+Jaipur,+Rajasthan+302024&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== Footer ==================== -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="brand"><span class="brand-mark"><img src="images/logo.png" alt="Sanskar Grand logo" class="brand-logo-img" onerror="this.style.display='none'"><span class="brand-fallback">SG</span></span><span>Sanskar Grand<em>By Maan</em></span></a>
-        <p>A premium, all-vegetarian dining experience on Jaipur's 200 Feet Bypass Road — part of the Sanskar Grand hotel by Maan.</p>
-        <div class="footer-social">
-          <a href="https://www.instagram.com/sanskar_grand?igsh=NGhwZ3Ricm1xeHpr" aria-label="Instagram">IG</a>
-          <a href="https://wa.me/919799341599" aria-label="WhatsApp">WP</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h6>Explore</h6>
-        <ul>
-          <li><a href="index.html#about">About Us</a></li>
-          <li><a href="menu.html">Full Menu</a></li>
-          <li><a href="index.html#gallery">Gallery</a></li>
-          <li><a href="index.html#reviews">Reviews</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h6>Categories</h6>
-        <ul>
-          <li><a href="menu.html?category=starters">Starters</a></li>
-          <li><a href="menu.html?category=main-course">Main Course</a></li>
-          <li><a href="menu.html?category=breads">Indian Breads</a></li>
-          <li><a href="menu.html?category=desserts">Desserts</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h6>Contact</h6>
-        <ul>
-          <li><a href="tel:+919799341599">+919799341599</a></li>
-          <li><a href="mailto:sanskargrandbymaan@gmail.com">sanskargrandbymaan@gmail.com</a></li>
-          <li><a href="#contact">310, 200 Feet Bypass Road, Jaipur</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© <span id="year"></span> Sanskar Grand by Maan. All rights reserved.</span>
-      <span>Crafted with care · Static site, zero backend</span>
-    </div>
-  </div>
-</footer>
-
-<!-- ==================== Floating Actions ==================== -->
-<div class="floating-actions">
-  <a class="fab fab-whatsapp" href="https://wa.me/919799341599" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
-  <a class="fab fab-call" href="tel:+919799341599" aria-label="Call the restaurant">📞</a>
-</div>
-
-<script src="js/storage.js"></script>
-<script src="js/app.js"></script>
+      `;
+      document.body.appendChild(nav);
+      nav.querySelector('button').onclick = () => nav.remove();
+      nav.querySelectorAll('a').forEach(a => a.onclick = () => nav.remove());
+    });
+    
+    // Lightbox
+    function showLightbox(element) {
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = element.style.backgroundImage.slice(5, -2);
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+    }
+    
+    function hideLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('flex');
+      lightbox.classList.add('hidden');
+    }
+    
+    // Keyboard escape for lightbox
+    document.addEventListener('keydown', function(e) {
+      if (e.key === "Escape") {
+        const lightbox = document.getElementById('lightbox');
+        if (!lightbox.classList.contains('hidden')) hideLightbox();
+      }
+    });
+    
+    // Initialize everything
+    window.onload = function() {
+      initializeTailwind();
+      
+      // Optional: smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+      
+      console.log('%c[✅] 100x upgraded Sanskar Grand site loaded successfully!', 'color:#c5a26f');
+    };
+  </script>
 </body>
 </html>
