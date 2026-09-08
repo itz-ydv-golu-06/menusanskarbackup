@@ -3,35 +3,46 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Full Menu | Sanskar Grand by Maan</title>
-<meta name="description" content="Browse the complete Sanskar Grand menu — starters, soups, Indian main course, Chinese, rice & noodles, breads, beverages and desserts. Search, filter, and save your favourites." />
-<link rel="canonical" href="https://sanskargrand.example.com/menu.html" />
+<title>Full Menu | Sanskar Grand by Maan — 100% Vegetarian, Jaipur</title>
+<meta name="description" content="Browse the complete Sanskar Grand menu — starters, breakfasts, soups, Indian main course, Chinese, biryanis, breads, beverages and desserts. Search, filter, favourite and order in-room dining." />
+<meta name="theme-color" content="#0c0a07" />
+<link rel="canonical" href="https://itz-ydv-golu-06.github.io/menusanskarbackup/menu.html" />
+<meta property="og:type" content="restaurant.menu" />
+<meta property="og:title" content="Full Menu | Sanskar Grand by Maan" />
+<meta property="og:description" content="90+ vegetarian dishes, searched and filtered your way. Order to your room or book a table." />
+<meta property="og:image" content="images/gallery-breakfast.jpg" />
+
 <link rel="icon" href="icons/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="icons/pwa/apple-touch-icon.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Cormorant+Garamond:ital@1&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="css/menu.css" />
 </head>
 <body>
 
+<!-- ==================== Loading Screen ==================== -->
 <div id="loading-screen" aria-hidden="true">
-  <div class="loader-crest">
-    <img src="images/logo.png" alt="Sanskar Grand Logo" class="loader-logo">
-</div>
-  <p class="loader-text">Plating up the menu…</p>
+  <div>
+    <div class="loader-crest">
+      <img src="images/logo.png" alt="Sanskar Grand Logo" class="loader-logo" />
+    </div>
+    <p class="loader-text">Plating up the menu…</p>
+  </div>
 </div>
 
+<!-- ==================== Navbar ==================== -->
 <header class="navbar" id="navbar">
   <div class="container nav-inner">
-    <a href="index.html" class="brand">
+    <a href="index.html" class="brand" aria-label="Sanskar Grand by Maan — home">
       <span class="brand-mark"><img src="images/logo.png" alt="Sanskar Grand logo" class="brand-logo-img" onerror="this.style.display='none'"><span class="brand-fallback"></span></span>
       <span>Sanskar Grand<em>By Maan</em></span>
     </a>
-    <nav class="nav-links" id="nav-links">
+    <nav class="nav-links" id="nav-links" aria-label="Primary">
       <a href="index.html#about">About</a>
+      <a href="index.html#rooms">Rooms</a>
       <a href="index.html#specials">Specials</a>
       <a href="index.html#gallery">Gallery</a>
       <a href="index.html#reviews">Reviews</a>
@@ -39,47 +50,61 @@
       <a href="menu.html" class="active">Full Menu</a>
     </nav>
     <div class="nav-cta">
-      <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark / light mode">🌙</button>
       <button class="icon-btn cart-btn" id="cart-open-btn" aria-label="Open cart">
         🛒<span class="cart-badge" id="cart-badge" hidden>0</span>
       </button>
       <a href="tel:+919799341599" class="btn btn-gold">Reserve</a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </header>
 
+<!-- ==================== Closed-hours banner (auto shown by menu.js) ==================== -->
+<div id="hours-banner" hidden>🌙 Room service is closed right now — ordering hours are 7:00 AM to 10:30 PM. You can still browse the menu and save favourites.</div>
+
+<!-- ==================== Menu hero ==================== -->
 <section class="menu-hero">
   <div class="container">
-    <p class="eyebrow">call 222</p>
+    <p class="eyebrow">Sanskar Grand · By Maan · Jaipur</p>
     <h1>Our Complete Menu</h1>
-    <p>Every dish is prepared fresh, 100% vegetarian, from our  kitchen. Search, filter by category,and call 222 to order.</p>
+    <p>Every dish prepared fresh in our 100% vegetarian kitchen — from sunrise breakfasts to
+       midnight tandoor. Search, filter by category, save your favourites, and order in-room
+       dining between 7:00 AM and 10:30 PM.</p>
+    <div class="hero-pills">
+      <span>🌱 Pure Veg</span>
+      <span>🔥 Tandoor Fresh</span>
+      <span>🛎️ In-Room Dining</span>
+      <span>💰 GST-Inclusive</span>
+    </div>
   </div>
 </section>
 
+<!-- ==================== Toolbar ==================== -->
 <div class="menu-toolbar">
   <div class="container">
     <div class="toolbar-row">
       <label class="search-box">
-        <span class="icon">🔍</span>
-        <input type="search" id="search-input" placeholder="Search dishes — e.g. paneer, biryani, kheer…" aria-label="Search the menu" />
+        <span class="icon" aria-hidden="true">🔍</span>
+        <input type="search" id="search-input" placeholder="Search dishes — e.g. paneer, biryani, kheer…" aria-label="Search the menu" autocomplete="off" />
       </label>
       <div class="toolbar-actions">
         <button class="icon-btn" id="fav-filter-btn" aria-label="Show favourites only" title="Show favourites only">♥</button>
-        <div class="view-toggle">
+        <div class="view-toggle" role="group" aria-label="Layout">
           <button id="view-grid-btn" class="active" aria-label="Grid view">▦ Grid</button>
           <button id="view-list-btn" aria-label="List view">☰ List</button>
         </div>
       </div>
     </div>
-    <div class="cat-filters" id="cat-filters">
+    <div class="cat-filters" id="cat-filters" role="tablist" aria-label="Menu categories">
       <!-- populated by menu.js -->
     </div>
   </div>
 </div>
 
+<!-- ==================== Menu ==================== -->
 <main class="menu-wrap">
   <div class="container">
     <div class="results-meta">
@@ -92,33 +117,38 @@
   </div>
 </main>
 
+<!-- ==================== Footer ==================== -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="brand"><span class="brand-mark"><img src="images/logo.png" alt="Sanskar Grand logo" class="brand-logo-img" onerror="this.style.display='none'"><span class="brand-fallback">
-        </span></span><span>Sanskar Grand<em>By Maan</em></span></a>
-        <p>A premium, all-vegetarian dining experience on Jaipur's 200 Feet Bypass Road.</p>
+        <a href="index.html" class="brand">
+          <span class="brand-mark"><img src="images/logo.png" alt="Sanskar Grand logo" class="brand-logo-img" onerror="this.style.display='none'"></span>
+          <span>Sanskar Grand<em>By Maan</em></span>
+        </a>
+        <p>A premium, all-vegetarian dining experience and boutique stay on Jaipur's 200 Feet Bypass Road.</p>
         <div class="footer-social">
-          <a href="#" aria-label="Instagram">IG</a>
-          <a href="#" aria-label="Facebook">FB</a>
-          <a href="https://wa.me/919799341599" aria-label="WhatsApp">WA</a>
+          <a href="https://wa.me/919799341599" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+          <a href="tel:+919799341599" aria-label="Call us">☎</a>
+          <a href="mailto:sanskargrandbymaan@gmail.com" aria-label="Email us">@</a>
         </div>
       </div>
       <div class="footer-col">
         <h6>Explore</h6>
         <ul>
           <li><a href="index.html#about">About Us</a></li>
+          <li><a href="index.html#rooms">Rooms &amp; Suites</a></li>
           <li><a href="menu.html">Full Menu</a></li>
           <li><a href="index.html#gallery">Gallery</a></li>
         </ul>
       </div>
-     
       <div class="footer-col">
         <h6>Contact</h6>
         <ul>
-          <li><a href="tel:+919799341599">+91 9799341599</a></li>
+          <li><a href="tel:+919799341599">+91 97993 41599</a></li>
           <li><a href="mailto:sanskargrandbymaan@gmail.com">sanskargrandbymaan@gmail.com</a></li>
+          <li><a href="index.html#contact">310, 200 Feet Bypass Road, Jaipur</a></li>
+          <li><a href="index.html#contact">Open daily · 7 AM – 11 PM</a></li>
         </ul>
       </div>
     </div>
@@ -129,12 +159,12 @@
   </div>
 </footer>
 
+<!-- ==================== Floating + sticky ==================== -->
 <div class="floating-actions">
   <a class="fab fab-whatsapp" href="https://wa.me/919799341599" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
   <a class="fab fab-call" href="tel:+919799341599" aria-label="Call the restaurant">📞</a>
 </div>
 
-<!-- ==================== Sticky Cart Button (mobile-first) ==================== -->
 <button class="sticky-cart-btn" id="sticky-cart-btn" hidden>
   <span class="sticky-cart-icon">🛒<span class="cart-badge" id="sticky-cart-badge">0</span></span>
   <span class="sticky-cart-label">View Cart</span>
@@ -143,17 +173,15 @@
 
 <!-- ==================== Cart Drawer ==================== -->
 <div class="cart-overlay" id="cart-overlay"></div>
-<aside class="cart-drawer" id="cart-drawer" aria-hidden="true">
+<aside class="cart-drawer" id="cart-drawer" aria-hidden="true" aria-label="Your order">
 
-  <!-- ---- View: Cart contts ---- -->
+  <!-- View: Cart -->
   <div class="cart-view" id="cart-view">
     <div class="cart-drawer-head">
       <h3>Your Order</h3>
       <button class="modal-close" id="cart-close-btn" aria-label="Close cart">✕</button>
     </div>
-    <div class="cart-items" id="cart-items">
-      <!-- populated by menu.js -->
-    </div>
+    <div class="cart-items" id="cart-items"><!-- populated by menu.js --></div>
     <div class="cart-empty-state" id="cart-empty-state" hidden>
       <div class="glyph">🛒</div>
       <p>Your cart is empty. Add a few dishes to get started.</p>
@@ -167,7 +195,7 @@
     </div>
   </div>
 
-  <!-- ---- View: Guest info form ---- -->
+  <!-- View: Guest details -->
   <div class="cart-view" id="checkout-view" hidden>
     <div class="cart-drawer-head">
       <button class="modal-close" id="checkout-back-btn" aria-label="Back to cart">←</button>
@@ -181,8 +209,8 @@
         <input type="text" id="guest-name" placeholder="e.g. Rahul Sharma" required />
       </div>
       <div class="field">
-        <label for="room-number">Room Number <span class="req">*</span></label>
-        <input type="text" id="room-number" placeholder="e.g. 205" required />
+        <label for="room-number">Room / Table Number <span class="req">*</span></label>
+        <input type="text" id="room-number" placeholder="e.g. 205 or Table 4" required />
       </div>
       <div class="field">
         <label for="guest-mobile">Mobile Number <span class="opt">(optional)</span></label>
@@ -192,7 +220,7 @@
         <label for="guest-note">Special Instructions <span class="opt">(optional)</span></label>
         <textarea id="guest-note" placeholder="e.g. Less spicy, no onion…"></textarea>
       </div>
-      <div class="cart-summary" style="margin-top:6px;">
+      <div class="cart-summary" style="margin-top:2px;">
         <div class="summary-row summary-grand"><span>Grand Total</span><span id="checkout-grand">₹0</span></div>
       </div>
       <button type="submit" class="btn btn-gold btn-block" id="place-order-btn">
@@ -202,7 +230,7 @@
     </form>
   </div>
 
-  <!-- ---- View: Success ---- -->
+  <!-- View: Success -->
   <div class="cart-view cart-success" id="success-view" hidden>
     <div class="success-check">✓</div>
     <h3>Order Placed!</h3>
@@ -211,10 +239,22 @@
 
 </aside>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="js/storage.js"></script>
 <script src="js/cart.js"></script>
 <script type="module" src="js/menu.js"></script>
+<script>
+/* Keep the mobile nav aria state in sync (menu.js handles open/close). */
+(function () {
+  var tgl = document.getElementById("nav-toggle");
+  var links = document.getElementById("nav-links");
+  if (tgl && links) {
+    tgl.addEventListener("click", function () {
+      tgl.setAttribute("aria-expanded", links.classList.contains("open") ? "true" : "false");
+    });
+  }
+})();
+</script>
 </body>
 </html>

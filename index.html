@@ -1,695 +1,631 @@
-Unfortunately, I can't directly browse your website or access the GitHub repository files — my web search couldn't find the actual content of your repo. But based on the name **"Menu Sanskar"**, it's clearly a **restaurant/food menu website**.
-
-Here's a **100x better, complete, ready-to-upload `index.html`** file. Just replace this single file in your repo:
-
----
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanskar — Menu</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        /* ═══════════════ RESET & VARIABLES ═══════════════ */
-        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-        :root {
-            --gold:    #c9a84c;
-            --gold-lt: #e8d9a0;
-            --dark:    #0e0e0e;
-            --card:    #161616;
-            --txt:     #d4d4d4;
-            --radius:  16px;
-        }
-        html { scroll-behavior:smooth; }
-        body {
-            font-family:'Inter',sans-serif;
-            background:var(--dark);
-            color:var(--txt);
-            line-height:1.6;
-            overflow-x:hidden;
-        }
-        img { max-width:100%; display:block; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sanskar Grand by Maan | Luxury Vegetarian Dining & Stay in Jaipur</title>
+<meta name="description" content="Sanskar Grand by Maan — a premium all-vegetarian restaurant and boutique stay on Jaipur's 200 Feet Bypass Road. 90+ signature dishes, tandoor-fresh breads, elegant rooms and banquet halls. Open 7 AM – 11 PM daily." />
+<meta name="keywords" content="Sanskar Grand, restaurant Jaipur, veg restaurant Jaipur, hotel Panchyawala, fine dining Jaipur, banquet hall Jaipur, 200 feet bypass road restaurant" />
+<meta name="author" content="Sanskar Grand by Maan" />
+<meta name="theme-color" content="#0c0a07" />
+<link rel="canonical" href="https://itz-ydv-golu-06.github.io/menusanskarbackup/" />
 
-        /* ═══════════════ UTILITY ═══════════════ */
-        .container { max-width:1200px; margin:0 auto; padding:0 20px; }
-        .section-title {
-            font-family:'Playfair Display',serif;
-            font-size:clamp(2rem,5vw,3.2rem);
-            text-align:center;
-            color:#fff;
-            margin-bottom:.3em;
-        }
-        .section-sub {
-            text-align:center;
-            color:var(--gold);
-            font-size:.95rem;
-            letter-spacing:3px;
-            text-transform:uppercase;
-            margin-bottom:2.5rem;
-        }
-        .gold { color:var(--gold); }
+<!-- Open Graph / Social -->
+<meta property="og:type" content="restaurant.restaurant" />
+<meta property="og:title" content="Sanskar Grand by Maan | Luxury Vegetarian Dining & Stay in Jaipur" />
+<meta property="og:description" content="A refined, 100% vegetarian kitchen and boutique stay on Jaipur's 200 Feet Bypass Road. Explore the menu, view rooms and reserve your table." />
+<meta property="og:url" content="https://itz-ydv-golu-06.github.io/menusanskarbackup/" />
+<meta property="og:image" content="images/hero-dining.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
 
-        /* ═══════════════ ANIMATIONS ═══════════════ */
-        @keyframes fadeUp {
-            from { opacity:0; transform:translateY(40px); }
-            to   { opacity:1; transform:translateY(0); }
-        }
-        .reveal {
-            opacity:0;
-            transform:translateY(40px);
-            transition: opacity .7s ease, transform .7s ease;
-        }
-        .reveal.visible {
-            opacity:1;
-            transform:translateY(0);
-        }
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="icons/pwa/apple-touch-icon.png" />
 
-        /* ═══════════════ NAVBAR ═══════════════ */
-        nav {
-            position:fixed; top:0; left:0; width:100%;
-            padding:18px 0;
-            z-index:1000;
-            backdrop-filter:blur(14px);
-            background:rgba(14,14,14,.75);
-            border-bottom:1px solid rgba(201,168,76,.15);
-            transition: padding .3s;
-        }
-        nav.scrolled { padding:10px 0; }
-        nav .container {
-            display:flex; align-items:center; justify-content:space-between;
-        }
-        .logo {
-            font-family:'Playfair Display',serif;
-            font-size:1.6rem; font-weight:700; color:#fff;
-            text-decoration:none;
-        }
-        .logo span { color:var(--gold); }
-        .nav-links { display:flex; gap:28px; list-style:none; }
-        .nav-links a {
-            text-decoration:none; color:var(--txt); font-size:.9rem;
-            font-weight:500; letter-spacing:.5px;
-            position:relative; transition:color .3s;
-        }
-        .nav-links a::after {
-            content:''; position:absolute; bottom:-4px; left:0;
-            width:0; height:2px; background:var(--gold);
-            transition:width .3s;
-        }
-        .nav-links a:hover { color:#fff; }
-        .nav-links a:hover::after { width:100%; }
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-        /* hamburger */
-        .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; }
-        .hamburger span { width:26px; height:2px; background:#fff; border-radius:2px; transition:.3s; }
+<link rel="stylesheet" href="css/home.css" />
+<link rel="preload" as="image" href="images/hero-dining.jpg" />
 
-        /* ═══════════════ HERO ═══════════════ */
-        .hero {
-            min-height:100vh;
-            display:flex; align-items:center; justify-content:center;
-            text-align:center;
-            background:
-                linear-gradient(180deg, rgba(14,14,14,.55) 0%, var(--dark) 100%),
-                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80') center/cover no-repeat;
-            padding:120px 20px 60px;
-        }
-        .hero h1 {
-            font-family:'Playfair Display',serif;
-            font-size:clamp(2.8rem,7vw,5.5rem);
-            color:#fff;
-            animation: fadeUp 1s ease both;
-        }
-        .hero h1 .line2 { display:block; color:var(--gold); }
-        .hero p {
-            margin-top:20px; font-size:1.1rem; max-width:520px;
-            margin-left:auto; margin-right:auto;
-            animation: fadeUp 1s .3s ease both;
-        }
-        .hero-btn {
-            display:inline-block; margin-top:36px;
-            padding:16px 48px; border:2px solid var(--gold);
-            color:var(--gold); text-decoration:none;
-            font-weight:600; letter-spacing:2px; text-transform:uppercase;
-            font-size:.85rem; border-radius:50px;
-            transition: .35s;
-            animation: fadeUp 1s .6s ease both;
-        }
-        .hero-btn:hover {
-            background:var(--gold); color:var(--dark);
-        }
-
-        /* ═══════════════ MENU SECTION ═══════════════ */
-        #menu { padding:100px 0; }
-
-        /* category tabs */
-        .cat-tabs {
-            display:flex; justify-content:center; flex-wrap:wrap; gap:12px;
-            margin-bottom:50px;
-        }
-        .cat-tab {
-            padding:10px 26px; border:1px solid rgba(201,168,76,.3);
-            background:transparent; color:var(--txt);
-            border-radius:50px; cursor:pointer; font-size:.85rem;
-            font-weight:500; letter-spacing:1px; text-transform:uppercase;
-            transition:.3s;
-        }
-        .cat-tab:hover, .cat-tab.active {
-            background:var(--gold); color:var(--dark); border-color:var(--gold);
-        }
-
-        /* menu grid */
-        .menu-grid {
-            display:grid;
-            grid-template-columns:repeat(auto-fill, minmax(320px,1fr));
-            gap:28px;
-        }
-        .menu-card {
-            background:var(--card);
-            border-radius:var(--radius);
-            overflow:hidden;
-            border:1px solid rgba(255,255,255,.05);
-            transition: transform .35s, box-shadow .35s;
-        }
-        .menu-card:hover {
-            transform:translateY(-6px);
-            box-shadow:0 20px 50px rgba(201,168,76,.12);
-        }
-        .menu-card img {
-            width:100%; height:210px; object-fit:cover;
-        }
-        .menu-card-body { padding:22px 24px; }
-        .menu-card-body h3 {
-            font-family:'Playfair Display',serif;
-            font-size:1.25rem; color:#fff; margin-bottom:6px;
-        }
-        .menu-card-body p {
-            font-size:.88rem; color:#999; margin-bottom:14px;
-        }
-        .menu-card-footer {
-            display:flex; align-items:center; justify-content:space-between;
-        }
-        .price {
-            font-size:1.3rem; font-weight:700; color:var(--gold);
-        }
-        .tag {
-            font-size:.7rem; padding:4px 12px;
-            border-radius:50px; font-weight:600;
-            letter-spacing:1px; text-transform:uppercase;
-        }
-        .tag.veg   { background:rgba(76,175,80,.15); color:#66bb6a; }
-        .tag.nonveg{ background:rgba(244,67,54,.15);  color:#ef5350; }
-
-        /* hidden cards for filter */
-        .menu-card.hide {
-            display:none;
-        }
-
-        /* ═══════════════ ABOUT ═══════════════ */
-        #about { padding:80px 0 100px; }
-        .about-grid {
-            display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
-        }
-        .about-img {
-            border-radius:var(--radius);
-            overflow:hidden;
-            position:relative;
-        }
-        .about-img img { width:100%; height:420px; object-fit:cover; }
-        .about-img::after {
-            content:''; position:absolute; inset:0;
-            border:2px solid var(--gold); border-radius:var(--radius);
-            transform:translate(14px,14px); z-index:-1;
-        }
-        .about-text h2 {
-            font-family:'Playfair Display',serif;
-            font-size:2.2rem; color:#fff; margin-bottom:18px;
-        }
-        .about-text p { margin-bottom:14px; color:#aaa; }
-
-        /* ═══════════════ SPECIALS BANNER ═══════════════ */
-        .specials {
-            padding:80px 20px;
-            text-align:center;
-            background:
-                linear-gradient(rgba(14,14,14,.82), rgba(14,14,14,.82)),
-                url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=80') center/cover no-repeat;
-            background-attachment:fixed;
-        }
-        .specials h2 {
-            font-family:'Playfair Display',serif;
-            font-size:clamp(1.8rem,4vw,3rem); color:#fff;
-        }
-        .specials p { color:var(--gold-lt); margin:14px auto 30px; max-width:500px; }
-        .specials .hero-btn { animation:none; }
-
-        /* ═══════════════ CONTACT ═══════════════ */
-        #contact { padding:100px 0; }
-        .contact-grid {
-            display:grid; grid-template-columns:1fr 1fr; gap:50px;
-        }
-        .contact-info h3 {
-            font-family:'Playfair Display',serif;
-            font-size:1.4rem; color:#fff; margin-bottom:20px;
-        }
-        .contact-info p { color:#999; margin-bottom:12px; display:flex; align-items:center; gap:10px; }
-        .contact-info svg { flex-shrink:0; }
-        .contact-form input,
-        .contact-form textarea {
-            width:100%; padding:14px 18px;
-            background:var(--card); border:1px solid rgba(255,255,255,.08);
-            border-radius:10px; color:#fff; font-size:.95rem;
-            margin-bottom:16px; outline:none;
-            font-family:'Inter',sans-serif;
-            transition:border .3s;
-        }
-        .contact-form input:focus,
-        .contact-form textarea:focus { border-color:var(--gold); }
-        .contact-form textarea { min-height:130px; resize:vertical; }
-        .contact-form button {
-            padding:14px 42px; border:none;
-            background:var(--gold); color:var(--dark);
-            font-weight:600; font-size:.9rem; letter-spacing:1px;
-            text-transform:uppercase; border-radius:50px;
-            cursor:pointer; transition:.3s;
-        }
-        .contact-form button:hover { background:#b8923f; }
-
-        /* ═══════════════ FOOTER ═══════════════ */
-        footer {
-            text-align:center; padding:40px 20px;
-            border-top:1px solid rgba(255,255,255,.06);
-            color:#555; font-size:.85rem;
-        }
-        footer span { color:var(--gold); }
-
-        /* ═══════════════ WHATSAPP FAB ═══════════════ */
-        .wa-fab {
-            position:fixed; bottom:28px; right:28px;
-            width:60px; height:60px; border-radius:50%;
-            background:#25D366; display:flex; align-items:center;
-            justify-content:center; z-index:999;
-            box-shadow:0 4px 20px rgba(37,211,102,.4);
-            transition:transform .3s;
-        }
-        .wa-fab:hover { transform:scale(1.1); }
-        .wa-fab svg { width:30px; height:30px; fill:#fff; }
-
-        /* ═══════════════ RESPONSIVE ═══════════════ */
-        @media(max-width:900px){
-            .about-grid, .contact-grid { grid-template-columns:1fr; }
-            .about-img { order:-1; }
-        }
-        @media(max-width:700px){
-            .nav-links {
-                position:fixed; top:0; right:-100%;
-                width:70%; height:100vh;
-                background:rgba(14,14,14,.97);
-                flex-direction:column; justify-content:center;
-                align-items:center; gap:36px;
-                transition:right .4s;
-            }
-            .nav-links.open { right:0; }
-            .hamburger { display:flex; z-index:1001; }
-            .menu-grid { grid-template-columns:1fr; }
-        }
-    </style>
+<!-- Structured data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["Restaurant", "Hotel"],
+  "name": "Sanskar Grand by Maan",
+  "image": "https://itz-ydv-golu-06.github.io/menusanskarbackup/images/hero-dining.jpg",
+  "url": "https://itz-ydv-golu-06.github.io/menusanskarbackup/",
+  "servesCuisine": ["Indian", "Chinese", "Continental", "South Indian"],
+  "acceptsReservations": "True",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "310, 200 Feet Bypass Road, Nemi Nagar Extension, Panchyawala",
+    "addressLocality": "Jaipur",
+    "addressRegion": "Rajasthan",
+    "postalCode": "302024",
+    "addressCountry": "IN"
+  },
+  "telephone": "+919799341599",
+  "email": "sanskargrandbymaan@gmail.com",
+  "priceRange": "₹₹",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "07:00",
+    "closes": "23:00"
+  },
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Pure Vegetarian Kitchen", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "In-Room Dining", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Banquet Hall", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Free Parking", "value": true }
+  ]
+}
+</script>
 </head>
 <body>
 
-<!-- ══════ NAVBAR ══════ -->
-<nav id="navbar">
-    <div class="container">
-        <a href="#" class="logo"><span>संस्कार</span> Menu</a>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-</nav>
+<!-- ==================== Loading Screen ==================== -->
+<div id="loading-screen" aria-hidden="true">
+  <div class="loader-inner">
+    <img src="images/logo.png" alt="Sanskar Grand Logo" class="loader-logo" />
+    <div class="loader-bar"><span></span></div>
+    <p class="loader-text">Setting the table…</p>
+  </div>
+</div>
 
-<!-- ══════ HERO ══════ -->
+<!-- ==================== Navbar ==================== -->
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand" aria-label="Sanskar Grand by Maan — home">
+      <span class="brand-mark"><img src="images/logo.png" alt="Sanskar Grand logo" class="brand-logo-img" onerror="this.style.display='none'"></span>
+      <span>Sanskar Grand<em>By Maan</em></span>
+    </a>
+
+    <nav class="nav-links" id="nav-links" aria-label="Primary">
+      <a href="#about">Our Story</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#specials">Specials</a>
+      <a href="#categories">Categories</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Visit Us</a>
+      <a href="menu.html">Full Menu</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="menu.html" class="btn btn-outline">View Menu</a>
+      <a href="tel:+919799341599" class="btn btn-gold">Reserve</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== Hero ==================== -->
 <section class="hero">
+  <div class="hero-parallax-layer" aria-hidden="true"></div>
+  <div class="container hero-inner">
     <div>
-        <h1>Welcome to <span class="line2">Sanskar</span></h1>
-        <p>Authentic flavours crafted with tradition. Explore our curated menu of timeless dishes.</p>
-        <a href="#menu" class="hero-btn">Explore Menu</a>
+      <p class="eyebrow">By Maan · Jaipur · Est. on the 200 Ft Bypass</p>
+      <h1 class="hero-title">Where Every Plate Tells a <span class="gold">Grand Story</span></h1>
+      <p class="hero-desc">
+        Sanskar Grand unites the warmth of home-style Indian cooking with the finesse of a luxury
+        hotel kitchen — a wholly vegetarian menu, tandoor-fresh breads and elegant rooms,
+        crafted to be remembered long after the last bite.
+      </p>
+      <div class="hero-actions">
+        <a href="menu.html" class="btn btn-gold">Explore Full Menu</a>
+        <a href="#contact" class="btn btn-outline">Book a Table</a>
+        <a href="https://wa.me/919799341599?text=Namaste%20Sanskar%20Grand!%20I%27d%20like%20to%20reserve%20a%20table." class="btn btn-ghost" target="_blank" rel="noopener">WhatsApp Us →</a>
+      </div>
+      <div class="open-chip" id="open-chip">
+        <span class="open-dot" aria-hidden="true"></span>
+        <span id="open-chip-text">Checking kitchen hours…</span>
+      </div>
     </div>
-</section>
 
-<!-- ══════ MENU ══════ -->
-<section id="menu">
-    <div class="container">
-        <p class="section-sub">— Our Menu —</p>
-        <h2 class="section-title">Signature Dishes</h2>
-
-        <!-- Category Tabs -->
-        <div class="cat-tabs">
-            <button class="cat-tab active" data-cat="all">All</button>
-            <button class="cat-tab" data-cat="starters">Starters</button>
-            <button class="cat-tab" data-cat="mains">Main Course</button>
-            <button class="cat-tab" data-cat="breads">Breads</button>
-            <button class="cat-tab" data-cat="drinks">Drinks</button>
-            <button class="cat-tab" data-cat="desserts">Desserts</button>
-        </div>
-
-        <!-- Menu Grid -->
-        <div class="menu-grid" id="menuGrid">
-
-            <!-- STARTERS -->
-            <div class="menu-card reveal" data-cat="starters">
-                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80" alt="Paneer Tikka" loading="lazy">
-                <div class="menu-card-body">
-                    <h3>Paneer Tikka</h3>
-                    <p>Smoky chargrilled cottage cheese marinated in spiced yoghurt.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">₹249</span>
-                        <span class="tag veg">● Veg</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card reveal" data-cat="starters">
-                <img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600&q=80" alt="Samosa Platter" loading="lazy">
-                <div class="menu-card-body">
-                    <h3>Samosa Platter</h3>
-                    <p>Crispy golden pastry filled with spiced potato & peas, served with chutneys.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">₹149</span>
-                        <span class="tag veg">● Veg</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card reveal" data-cat="starters">
-                <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80" alt="Chicken Seekh Kebab" loading="lazy">
-                <div class="menu-card-body">
-                    <h3>Chicken Seekh Kebab</h3>
-                    <p>Minced chicken skewers with aromatic spices, grilled to perfection.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">₹299</span>
-                        <span class="tag nonveg">● Non-Veg</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MAINS -->
-            <div class="menu-card reveal" data-cat="mains">
-                <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80" alt="Dal Makhani" loading="lazy">
-                <div class="menu-card-body">
-                    <h3>Dal Makhani</h3>
-                    <p>Slow-cooked black lentils simmered in butter & cream overnight.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">₹269</span>
-                        <span class="tag veg">● Veg</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card reveal" data-cat="mains">
-                <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600&q=80" alt="Butter Chicken" loading="lazy">
-                <div class="menu-card-body">
-                    <h3>Butter Chicken</h3>
-                    <p>Tandoori chicken in rich, creamy tomato-butter gravy. A Sanskar classic.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">₹349</span>
-                        <span class="tag nonveg">● Non-Veg</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card reveal" data-cat="mains">
-                <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80" alt="Shahi Paneer" loading="lazy">
-                <div class="menu-card-body">
-                    <h3>Shahi Paneer</h3>
-                    <p>Royal paneer cooked in cashew-onion gravy with a hint of saffron.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">₹289</span>
-                        <span class="tag veg">● Veg</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card reveal" data-cat="mains">
-                <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&q=80" alt="Biryani" loading="lazy">
-                <div class="menu-card-body">
-                    <h3>Dum Biryani</h3>
-                    <p>Fragrant basmati rice layered with aromatic spices, slow-cooked in dum style.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">₹329</span>
-                        <span class="tag nonveg">● Non-Veg</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card reveal" data-cat="mains">
-                <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=600&q=80" alt="Chole Bhature" loading="lazy">
-                <div class="menu-card-body">
-                    <h3>Chole Bhature</h3>
-                    <p>Spiced chickpea curry served with fluffy deep-fried bread.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">₹199</span>
-                        <span class="tag veg">● Veg</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- BREADS -->
-            <div class="menu-card reveal" data-cat="breads">
-                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80" alt="Garlic Naan" loading="lazy">
-                <div class="menu-card-body">
-                    <h3>Garlic Naan</h3>
-                    <p>Soft tandoori bread topped with roasted garlic & fresh coriander.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">₹69</span>
-                        <span class="tag veg">● Veg</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card reveal" data-cat="breads">
-                <img src="https://images.unsplash.com/photo-1626078292938-21649a10b7c8?w=600&q=80" alt="Laccha Paratha" loading="lazy">
-                <div class="menu-card-body">
-                    <h3>Laccha Paratha</h3>
-                    <p>Layered flaky whole-wheat bread baked in clay tandoor.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">₹59</span>
-                        <span class="tag veg">● Veg</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DRINKS -->
-            <div class="menu-card reveal" data-cat="drinks">
-                <img src="https://images.unsplash.com/photo-1571006682575-d8daf285ac98?w=600&q=80" alt="Mango Lassi" loading="lazy">
-                <div class="menu-card-body">
-                    <h3>Mango Lassi</h3>
-                    <p>Creamy yoghurt blended with fresh Alphonso mango pulp.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">₹129</span>
-                        <span class="tag veg">● Veg</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card reveal" data-cat="drinks">
-                <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80" alt="Masala Chai" loading="lazy">
-                <div class="menu-card-body">
-                    <h3>Masala Chai</h3>
-                    <p>Traditional spiced tea brewed with ginger, cardamom & cloves.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">₹49</span>
-                        <span class="tag veg">● Veg</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DESSERTS -->
-            <div class="menu-card reveal" data-cat="desserts">
-                <img src="https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?w=600&q=80" alt="Gulab Jamun" loading="lazy">
-                <div class="menu-card-body">
-                    <h3>Gulab Jamun</h3>
-                    <p>Golden fried dumplings soaked in cardamom-rose sugar syrup.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">₹139</span>
-                        <span class="tag veg">● Veg</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card reveal" data-cat="desserts">
-                <img src="https://images.unsplash.com/photo-1633383718081-22ac93e3db65?w=600&q=80" alt="Rasmalai" loading="lazy">
-                <div class="menu-card-body">
-                    <h3>Rasmalai</h3>
-                    <p>Soft cottage-cheese patties in sweetened saffron-pistachio milk.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">₹159</span>
-                        <span class="tag veg">● Veg</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+    <div class="hero-stats reveal">
+      <div class="stat"><b data-count="90" data-suffix="+">0</b><span>Signature Dishes</span></div>
+      <div class="stat"><b data-count="100" data-suffix="%">0</b><span>Pure Vegetarian</span></div>
+      <div class="stat"><b data-count="16" data-suffix=" hrs">0</b><span>Daily Service</span></div>
     </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
 </section>
 
-<!-- ══════ SPECIALS BANNER ══════ -->
-<section class="specials">
-    <h2>Today's Special: <span class="gold">Thali Combo</span></h2>
-    <p>Complete meal — dal, sabzi, raita, rice, naan, dessert — starting at just ₹299</p>
-    <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I'd%20like%20to%20order%20the%20Thali%20Combo" class="hero-btn" target="_blank">Order on WhatsApp</a>
-</section>
+<!-- ==================== Marquee ==================== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>100% Pure Vegetarian</span><span>Tandoor-Fresh Breads</span><span>In-Room Dining</span><span>GST-Inclusive Billing</span><span>Open 7:00 AM – 11:00 PM</span><span>Banquets &amp; Celebrations</span>
+    <span>100% Pure Vegetarian</span><span>Tandoor-Fresh Breads</span><span>In-Room Dining</span><span>GST-Inclusive Billing</span><span>Open 7:00 AM – 11:00 PM</span><span>Banquets &amp; Celebrations</span>
+  </div>
+</div>
 
-<!-- ══════ ABOUT ══════ -->
-<section id="about">
-    <div class="container">
-        <div class="about-grid">
-            <div class="about-img reveal">
-                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Sanskar Kitchen">
-            </div>
-            <div class="about-text reveal">
-                <p class="section-sub" style="text-align:left;">Our Story</p>
-                <h2>Tradition Meets <span class="gold">Taste</span></h2>
-                <p>At <strong>Sanskar</strong>, we believe every meal is a celebration of culture. Our recipes are passed down through generations, using hand-ground spices and the freshest local ingredients.</p>
-                <p>From the warmth of our tandoor to the love in our kitchen, every dish is prepared with the same care your family would give.</p>
-                <p style="color:var(--gold); font-weight:500; margin-top:8px;">🕐 Open Daily: 11:00 AM — 11:00 PM</p>
-            </div>
-        </div>
+<!-- ==================== Story ==================== -->
+<section class="section" id="about">
+  <div class="container story-grid">
+    <div class="story-media reveal">
+      <div class="seal" aria-hidden="true"><span>100%<br>VEG<br>KITCHEN</span></div>
+      <div class="frame-main"><img src="images/hotel-night.jpg" alt="Sanskar Grand hotel facade glowing at night" loading="lazy" /></div>
+      <div class="frame-float"><img src="images/gallery-tandoor.jpg" alt="Fresh breads leaving the tandoor" loading="lazy" /></div>
     </div>
-</section>
-
-<!-- ══════ CONTACT ══════ -->
-<section id="contact">
-    <div class="container">
-        <p class="section-sub">— Get in Touch —</p>
-        <h2 class="section-title">Contact Us</h2>
-        <div class="contact-grid">
-            <div class="contact-info reveal">
-                <h3>Visit <span class="gold">Sanskar</span></h3>
-                <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--gold)" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
-                    123, Main Market Road, Your City, India
-                </p>
-                <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--gold)" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.01l-2.2 2.2z"/></svg>
-                    +91 XXXXX XXXXX
-                </p>
-                <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--gold)" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                    contact@sanskar.com
-                </p>
-                <!-- Google Maps Embed -->
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.0!2d77.0!3d26.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDU0JzAwLjAiTiA3N8KwMDAnMDAuMCJF!5e0!3m2!1sen!2sin!4v1"
-                    width="100%" height="220" style="border:0; border-radius:12px; margin-top:18px; filter:grayscale(.7) invert(.92) contrast(1.1);"
-                    allowfullscreen="" loading="lazy">
-                </iframe>
-            </div>
-            <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('Thank you! We will get back to you soon. 🙏');">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <input type="tel" placeholder="Phone Number">
-                <textarea placeholder="Your Message…" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
+    <div class="story-copy reveal reveal-delay-1">
+      <p class="eyebrow">Since Day One · A Legacy of Hospitality</p>
+      <h2 class="section-title">A <em>grand</em> table inside a premium stay</h2>
+      <p class="lead" style="margin-top:18px;">
+        Set within the Sanskar Grand hotel on Jaipur's 200 Feet Bypass Road, our kitchen serves
+        guests and city diners alike.
+      </p>
+      <p>
+        From hearty Indian breakfasts at sunrise to slow-simmered dal makhani and tandoor-fresh
+        breads at midnight, every plate leaves the pass with the same promise — pure vegetarian,
+        generously portioned, and made with intention.
+      </p>
+      <p>
+        Whether it reaches a hotel room on a silver tray or a candle-lit table in our dining room,
+        the care never changes. That is the Sanskar Grand way.
+      </p>
+      <ul class="story-points">
+        <li>Pure Vegetarian Kitchen</li>
+        <li>In-Room Dining Available</li>
+        <li>GST-Inclusive Billing</li>
+        <li>Open 7:00 AM – 11:00 PM</li>
+        <li>Banquet &amp; Party Hall</li>
+        <li>Family &amp; Group Friendly</li>
+      </ul>
+      <a href="menu.html" class="btn btn-outline">See What's Cooking</a>
+      <p class="signature" style="margin-top:30px;">— Maan<small>Proprietor, Sanskar Grand</small></p>
     </div>
+  </div>
 </section>
 
-<!-- ══════ FOOTER ══════ -->
-<footer>
-    <p>© 2026 <span>Sanskar</span>. Made with ❤️ — All rights reserved.</p>
+<!-- ==================== Rooms ==================== -->
+<section class="section rooms" id="rooms">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Stay With Us</p>
+      <h2 class="section-title">Rooms designed for <em>rest</em></h2>
+      <p class="section-sub">Comfortable, well-appointed rooms right above the restaurant — with in-room dining from 7 AM to 10:30 PM.</p>
+    </div>
+
+    <div class="rooms-grid">
+      <article class="room-card reveal reveal-delay-1">
+        <div class="room-media"><img src="images/room-deluxe.jpg" alt="Deluxe room with queen bed and city view" loading="lazy" /></div>
+        <div class="room-body">
+          <h3>Deluxe Room</h3>
+          <p>Spacious and bright, with a plush queen bed, work desk and soft city views — our most-loved room for couples and solo travellers.</p>
+          <div class="room-chips"><span>Queen Bed</span><span>Work Desk</span><span>City View</span><span>Room Dining</span></div>
+          <div class="room-cta">
+            <span class="room-price">Best rate <small>on Booking.com</small></span>
+            <a class="btn btn-outline" href="https://www.booking.com/searchresults.html?ss=Sanskar%20Grand%20by%20Maan%2C%20Jaipur" target="_blank" rel="noopener">Book ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="room-card featured reveal reveal-delay-2">
+        <span class="room-flag">Most Popular</span>
+        <div class="room-media"><img src="images/room-super.jpg" alt="Super deluxe room with private sit-out balcony" loading="lazy" /></div>
+        <div class="room-body">
+          <h3>Super Deluxe Room</h3>
+          <p>Extra living space, premium furnishings and a private sit-out balcony — the quiet corner of the house our regulars fight over.</p>
+          <div class="room-chips"><span>King Bed</span><span>Balcony</span><span>Lounge Corner</span><span>Room Dining</span></div>
+          <div class="room-cta">
+            <span class="room-price">Best rate <small>on Booking.com</small></span>
+            <a class="btn btn-gold" href="https://www.booking.com/searchresults.html?ss=Sanskar%20Grand%20by%20Maan%2C%20Jaipur" target="_blank" rel="noopener">Book ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="room-card reveal reveal-delay-3">
+        <div class="room-media"><img src="images/room-suite.jpg" alt="Executive suite with separate seating area" loading="lazy" /></div>
+        <div class="room-body">
+          <h3>Executive Suite</h3>
+          <p>Our largest room, with a separate seating area and sofa bed — ideal for longer stays, small families and working guests.</p>
+          <div class="room-chips"><span>King Bed</span><span>Seating Area</span><span>Sofa Bed</span><span>Room Dining</span></div>
+          <div class="room-cta">
+            <span class="room-price">Best rate <small>on Booking.com</small></span>
+            <a class="btn btn-outline" href="https://www.booking.com/searchresults.html?ss=Sanskar%20Grand%20by%20Maan%2C%20Jaipur" target="_blank" rel="noopener">Book ↗</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <p class="rooms-note reveal">Reservations are handled securely by our booking partner — <a href="https://www.booking.com/searchresults.html?ss=Sanskar%20Grand%20by%20Maan%2C%20Jaipur" target="_blank" rel="noopener">view live rates &amp; availability on Booking.com →</a></p>
+  </div>
+</section>
+
+<!-- ==================== Chef Specials + Best Sellers ==================== -->
+<section class="section" id="specials">
+  <div class="container">
+    <div class="duo-head reveal">
+      <div>
+        <p class="eyebrow">Curated by the Kitchen</p>
+        <h2 class="section-title">Chef's <em>special</em> selections</h2>
+      </div>
+      <a href="menu.html" class="btn btn-outline">Browse Entire Menu →</a>
+    </div>
+    <div class="dish-grid" id="chef-special-grid"><!-- populated from live menu data by js/app.js --></div>
+
+    <div class="duo-head reveal" style="margin-top:90px;">
+      <div>
+        <p class="eyebrow">Guest Favourites</p>
+        <h2 class="section-title">Our <em>best</em> sellers</h2>
+      </div>
+      <p class="section-sub" style="max-width:36ch;margin:0;">The dishes our guests keep coming back for — season after season.</p>
+    </div>
+    <div class="dish-grid" id="best-seller-grid"><!-- populated from live menu data by js/app.js --></div>
+  </div>
+</section>
+
+<!-- ==================== Categories ==================== -->
+<section class="section rooms" id="categories">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow">The Full Spread</p>
+      <h2 class="section-title">Explore by <em>category</em></h2>
+      <p class="section-sub">From sunrise breakfasts to midnight tandoor — tap a category to open it in the full menu.</p>
+    </div>
+    <div class="cat-strip" id="category-grid"><!-- populated from live menu data by js/app.js --></div>
+  </div>
+</section>
+
+<!-- ==================== Gallery ==================== -->
+<section class="section gallery" id="gallery">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow">A Glimpse Inside</p>
+      <h2 class="section-title">The house, in <em>pictures</em></h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <figure class="g-item" data-caption="The dining room, dressed for evening service"><img src="images/hero-dining.jpg" alt="Sanskar Grand dining room at night" loading="lazy" /><figcaption>The dining room, dressed for evening service</figcaption></figure>
+      <figure class="g-item" data-caption="Sanskar Grand glowing on the 200 Feet Bypass Road"><img src="images/hotel-night.jpg" alt="Hotel exterior at night" loading="lazy" /><figcaption>Sanskar Grand glowing on the 200 Feet Bypass Road</figcaption></figure>
+      <figure class="g-item" data-caption="A table for two, set the grand way"><img src="images/gallery-dining.jpg" alt="Elegantly set table for two" loading="lazy" /><figcaption>A table for two, set the grand way</figcaption></figure>
+      <figure class="g-item" data-caption="Our banquet hall, ready for celebrations"><img src="images/gallery-banquet.jpg" alt="Banquet hall set for a reception" loading="lazy" /><figcaption>Our banquet hall, ready for celebrations</figcaption></figure>
+      <figure class="g-item" data-caption="The chef, plating with intent"><img src="images/gallery-chef.jpg" alt="Chef plating a dish in the kitchen" loading="lazy" /><figcaption>The chef, plating with intent</figcaption></figure>
+      <figure class="g-item" data-caption="Straight from the tandoor, every service"><img src="images/gallery-tandoor.jpg" alt="Fresh naan coming out of the tandoor" loading="lazy" /><figcaption>Straight from the tandoor, every service</figcaption></figure>
+      <figure class="g-item" data-caption="Morning thali — parathas, curd, pickle &amp; chai"><img src="images/gallery-breakfast.jpg" alt="Indian vegetarian breakfast spread" loading="lazy" /><figcaption>Morning thali — parathas, curd, pickle &amp; chai</figcaption></figure>
+      <figure class="g-item" data-caption="Super Deluxe — your room above the restaurant"><img src="images/room-super.jpg" alt="Super deluxe room interior" loading="lazy" /><figcaption>Super Deluxe — your room above the restaurant</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Reviews ==================== -->
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Word of Mouth</p>
+      <h2 class="section-title">What our <em>guests</em> say</h2>
+    </div>
+    <div class="review-shell reveal">
+      <div class="review-viewport">
+        <div class="review-track" id="review-track">
+          <div class="review-slide">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>"The dal makhani tastes exactly like it should — slow-cooked, buttery, unforgettable. Service matched the food."</blockquote>
+            <div class="who"><b>Riya Sharma</b><span>Jaipur</span></div>
+          </div>
+          <div class="review-slide">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>"Stayed at the hotel and ordered in-room dining every night. The paneer tikka alone is worth the visit."</blockquote>
+            <div class="who"><b>Aman Verma</b><span>Delhi</span></div>
+          </div>
+          <div class="review-slide">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>"Elegant setting, warm staff, and a genuinely well-designed vegetarian menu. Our go-to for family dinners."</blockquote>
+            <div class="who"><b>Priya Nair</b><span>Jaipur</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="review-nav" id="review-nav" role="tablist" aria-label="Reviews"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Contact / Booking ==================== -->
+<section class="section rooms" id="contact">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Visit Us</p>
+      <h2 class="section-title">Book your <em>table</em> or your stay</h2>
+      <p class="section-sub">Walk in, call, or send the form below straight to our WhatsApp — we reply fast.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="info-stack reveal">
+        <div class="info-card">
+          <div class="ic">📍</div>
+          <div>
+            <h4>Address</h4>
+            <p>310, 200 Feet Bypass Road, Nemi Nagar Extension,<br>Panchyawala, Jaipur, Rajasthan 302024</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="ic">🕒</div>
+          <div>
+            <h4>Timings</h4>
+            <p>Restaurant &amp; Room Service: 7:00 AM – 11:00 PM<br>Last order 10:30 PM · Open all week</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="ic">📞</div>
+          <div>
+            <h4>Phone &amp; WhatsApp</h4>
+            <p><a href="tel:+919799341599">+91 97993 41599</a><br><a href="https://wa.me/919799341599" target="_blank" rel="noopener">Chat on WhatsApp →</a></p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="ic">✉️</div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:sanskargrandbymaan@gmail.com">sanskargrandbymaan@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-card reveal reveal-delay-1">
+        <h3>Reserve a table</h3>
+        <p>Fill this in and it opens WhatsApp with your request pre-written — one tap to send.</p>
+        <form class="book-form" id="book-form">
+          <label>Name
+            <input type="text" id="bk-name" placeholder="e.g. Rahul Sharma" required />
+          </label>
+          <label>Guests
+            <select id="bk-guests">
+              <option>1 guest</option><option selected>2 guests</option><option>3 guests</option>
+              <option>4 guests</option><option>5 guests</option><option>6 guests</option>
+              <option>7+ / group</option>
+            </select>
+          </label>
+          <label>Date
+            <input type="date" id="bk-date" required />
+          </label>
+          <label>Time
+            <input type="time" id="bk-time" value="20:00" required />
+          </label>
+          <label class="full">Occasion / special request (optional)
+            <textarea id="bk-note" placeholder="Birthday dinner, window table, less spicy food…"></textarea>
+          </label>
+          <div class="full">
+            <button type="submit" class="btn btn-gold btn-block">Send Reservation on WhatsApp</button>
+          </div>
+          <p class="form-note">Prefer to talk? <b><a href="tel:+919799341599">Call +91 97993 41599</a></b> — we're on the line 7 AM to 11 PM.</p>
+        </form>
+      </div>
+    </div>
+
+    <div class="map-wrap reveal">
+      <iframe
+        title="Sanskar Grand by Maan on Google Maps"
+        src="https://maps.google.com/maps?q=Sanskar%20Grand%20by%20Maan%2C%20200%20Feet%20Bypass%20Road%2C%20Panchyawala%2C%20Jaipur&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Footer ==================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <span class="brand-mark"><img src="images/logo.png" alt="Sanskar Grand logo" class="brand-logo-img" onerror="this.style.display='none'"></span>
+          <span>Sanskar Grand<em>By Maan</em></span>
+        </a>
+        <p>A premium, all-vegetarian dining experience and boutique stay on Jaipur's 200 Feet Bypass Road.</p>
+        <div class="footer-social">
+          <a href="https://wa.me/919799341599" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+          <a href="tel:+919799341599" aria-label="Call us">☎</a>
+          <a href="mailto:sanskargrandbymaan@gmail.com" aria-label="Email us">@</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h6>Explore</h6>
+        <ul>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#rooms">Rooms &amp; Suites</a></li>
+          <li><a href="menu.html">Full Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reviews">Guest Reviews</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Menu Hubs</h6>
+        <ul>
+          <li><a href="menu.html?category=starters">Starters</a></li>
+          <li><a href="menu.html?category=main-course">Indian Main Course</a></li>
+          <li><a href="menu.html?category=chinese">Chinese</a></li>
+          <li><a href="menu.html?category=rice-noodles">Rice &amp; Biryani</a></li>
+          <li><a href="menu.html?category=desserts">Desserts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Contact</h6>
+        <ul>
+          <li><a href="tel:+919799341599">+91 97993 41599</a></li>
+          <li><a href="mailto:sanskargrandbymaan@gmail.com">sanskargrandbymaan@gmail.com</a></li>
+          <li><span>310, 200 Feet Bypass Road,<br>Panchyawala, Jaipur 302024</span></li>
+          <li><span>Open daily · 7 AM – 11 PM</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Sanskar Grand by Maan. All rights reserved.</span>
+      <span>Crafted with ♥ in Jaipur · <a href="admin.html">Staff Login</a></span>
+    </div>
+  </div>
 </footer>
 
-<!-- ══════ WHATSAPP FAB ══════ -->
-<a href="https://wa.me/91XXXXXXXXXX" class="wa-fab" target="_blank" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.128-1.958A15.89 15.89 0 0 0 16.004 32C24.826 32 32 24.822 32 16S24.826 0 16.004 0zm9.35 22.6c-.392 1.1-1.942 2.014-3.178 2.282-.846.18-1.95.324-5.67-1.218-4.762-1.97-7.826-6.81-8.064-7.126-.23-.316-1.906-2.54-1.906-4.844s1.204-3.436 1.632-3.906c.428-.47.936-.588 1.248-.588.312 0 .624.002.898.016.288.014.674-.11 1.054.804.392.94 1.33 3.244 1.448 3.48.118.236.196.51.038.826-.158.316-.236.514-.47.788-.236.276-.496.616-.708.826-.236.236-.482.49-.208.96s1.222 2.016 2.624 3.264c1.806 1.606 3.328 2.104 3.798 2.34.47.236.744.196 1.018-.118.274-.314 1.174-1.37 1.488-1.84.314-.47.628-.392 1.058-.236.43.158 2.732 1.288 3.202 1.524.47.236.782.354.898.548.118.196.118 1.128-.274 2.218z"/></svg>
-</a>
+<!-- ==================== Floating actions ==================== -->
+<div class="floating-actions">
+  <a class="fab fab-whatsapp" href="https://wa.me/919799341599" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+  <a class="fab fab-call" href="tel:+919799341599" aria-label="Call the restaurant">📞</a>
+</div>
+<button class="to-top" id="to-top" aria-label="Back to top">↑</button>
 
-<!-- ══════ JAVASCRIPT ══════ -->
+<!-- ==================== Lightbox ==================== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image viewer">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close image viewer">✕</button>
+  <div>
+    <img id="lightbox-img" src="" alt="" />
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+</div>
+
+<script src="js/storage.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/app.js"></script>
 <script>
-    // ── Navbar shrink on scroll
-    const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 60);
+/* ============ Homepage extras (self-contained, no dependencies) ============ */
+(function () {
+  "use strict";
+
+  /* ---- Live open/closed chip (7:00 – 23:00) ---- */
+  var chip = document.getElementById("open-chip");
+  var chipText = document.getElementById("open-chip-text");
+  function paintOpenState() {
+    var m = new Date().getHours() * 60 + new Date().getMinutes();
+    var open = m >= 7 * 60 && m < 23 * 60;
+    chip.classList.toggle("closed", !open);
+    chipText.textContent = open
+      ? "Open now · kitchen serves till 11:00 PM"
+      : "Closed now · we reopen at 7:00 AM";
+  }
+  paintOpenState();
+  setInterval(paintOpenState, 60000);
+
+  /* ---- Animated stat counters ---- */
+  var counters = document.querySelectorAll("[data-count]");
+  function runCounter(el) {
+    var target = parseInt(el.dataset.count, 10);
+    var suffix = el.dataset.suffix || "";
+    var t0 = null;
+    function step(ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / 1400, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if ("IntersectionObserver" in window) {
+    var co = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { runCounter(e.target); co.unobserve(e.target); }
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(function (c) { co.observe(c); });
+  } else {
+    counters.forEach(runCounter);
+  }
+
+  /* ---- Review slider ---- */
+  var track = document.getElementById("review-track");
+  var nav = document.getElementById("review-nav");
+  var slides = track ? track.children.length : 0;
+  var idx = 0, timer = null;
+  function go(i) {
+    idx = (i + slides) % slides;
+    track.style.transform = "translateX(-" + idx * 100 + "%)";
+    nav.querySelectorAll("button").forEach(function (b, bi) {
+      b.classList.toggle("active", bi === idx);
     });
+  }
+  if (track && nav) {
+    for (var i = 0; i < slides; i++) {
+      (function (n) {
+        var b = document.createElement("button");
+        b.setAttribute("aria-label", "Show review " + (n + 1));
+        b.addEventListener("click", function () { go(n); restart(); });
+        nav.appendChild(b);
+      })(i);
+    }
+    function restart() { clearInterval(timer); timer = setInterval(function () { go(idx + 1); }, 6000); }
+    go(0); restart();
+    track.parentElement.addEventListener("mouseenter", function () { clearInterval(timer); });
+    track.parentElement.addEventListener("mouseleave", restart);
+  }
 
-    // ── Hamburger toggle
-    const hamburger = document.getElementById('hamburger');
-    const navLinks  = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-
-    // ── Category Filter
-    const tabs  = document.querySelectorAll('.cat-tab');
-    const cards = document.querySelectorAll('.menu-card');
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            const cat = tab.dataset.cat;
-            cards.forEach(card => {
-                if (cat === 'all' || card.dataset.cat === cat) {
-                    card.classList.remove('hide');
-                } else {
-                    card.classList.add('hide');
-                }
-            });
-        });
+  /* ---- Gallery lightbox ---- */
+  var lb = document.getElementById("lightbox");
+  var lbImg = document.getElementById("lightbox-img");
+  var lbCap = document.getElementById("lightbox-caption");
+  document.querySelectorAll(".g-item").forEach(function (fig) {
+    fig.addEventListener("click", function () {
+      var img = fig.querySelector("img");
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCap.textContent = fig.dataset.caption || "";
+      lb.classList.add("open");
+      document.body.style.overflow = "hidden";
     });
+  });
+  function closeLb() { lb.classList.remove("open"); document.body.style.overflow = ""; }
+  document.getElementById("lightbox-close").addEventListener("click", closeLb);
+  lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeLb(); });
 
-    // ── Scroll Reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('visible');
-                observer.unobserve(e.target);
-            }
+  /* ---- Reservation form → WhatsApp ---- */
+  var form = document.getElementById("book-form");
+  if (form) {
+    var dateInput = document.getElementById("bk-date");
+    dateInput.min = new Date().toISOString().split("T")[0];
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var name = document.getElementById("bk-name").value.trim();
+      var guests = document.getElementById("bk-guests").value;
+      var date = dateInput.value;
+      var time = document.getElementById("bk-time").value;
+      var note = document.getElementById("bk-note").value.trim();
+      var msg = "Namaste Sanskar Grand! 🙏\n" +
+        "Table reservation request:\n" +
+        "• Name: " + name + "\n" +
+        "• Guests: " + guests + "\n" +
+        "• Date: " + date + "\n" +
+        "• Time: " + time +
+        (note ? "\n• Note: " + note : "");
+      window.open("https://wa.me/919799341599?text=" + encodeURIComponent(msg), "_blank", "noopener");
+    });
+  }
+
+  /* ---- Back to top ---- */
+  var toTop = document.getElementById("to-top");
+  window.addEventListener("scroll", function () {
+    toTop.classList.toggle("show", window.scrollY > 700);
+  }, { passive: true });
+  toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+
+  /* ---- Scroll-spy for nav links ---- */
+  var sections = ["about", "rooms", "specials", "categories", "gallery", "reviews", "contact"]
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+  var navLinks = document.querySelectorAll(".nav-links a");
+  if ("IntersectionObserver" in window) {
+    var so = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        navLinks.forEach(function (a) {
+          a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id);
         });
-    }, { threshold: 0.15 });
-    reveals.forEach(el => observer.observe(el));
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    sections.forEach(function (s) { so.observe(s); });
+  }
+
+  /* ---- Mobile nav toggle: keep aria-expanded in sync ---- */
+  var tgl = document.getElementById("nav-toggle");
+  var links = document.getElementById("nav-links");
+  if (tgl && links) {
+    tgl.addEventListener("click", function () {
+      tgl.setAttribute("aria-expanded", links.classList.contains("open") ? "true" : "false");
+    });
+  }
+})();
 </script>
-
 </body>
 </html>
-```
-
----
-
-## ✅ How to upload:
-
-1. **Go to** your repo: `github.com/itz-ydv-golu-06/menusanskarbackup`
-2. **Click** on `index.html` → **Edit** (pencil icon) → **Select all** → **Paste** the code above → **Commit**
-3. Wait ~1 min → visit `itz-ydv-golu-06.github.io/menusanskarbackup/` 🔥
-
-## 🔧 What to customize (search & replace):
-
-| Find | Replace with |
-|---|---|
-| `91XXXXXXXXXX` | Your actual WhatsApp number (2 places) |
-| `+91 XXXXX XXXXX` | Your display phone number |
-| `contact@sanskar.com` | Your real email |
-| `123, Main Market Road...` | Your real address |
-| Google Maps `src` | Your real Google Maps embed URL |
-| Prices (`₹249`, etc.) | Your actual prices |
-| Dish names & descriptions | Your real menu items |
-
-## 🚀 What makes this 100x better:
-
-- **Dark luxury theme** with gold accents
-- **Smooth scroll animations** (fade-up on scroll)
-- **Category filter tabs** (All / Starters / Mains / Breads / Drinks / Desserts)
-- **Fully mobile responsive** with hamburger menu
-- **Floating WhatsApp button** for instant orders
-- **Parallax specials banner**
-- **Contact form + Google Maps**
-- **Veg/Non-Veg tags** on each item
-- **Zero dependencies** — single HTML file, works on GitHub Pages instantly
-- **Lazy-loaded images** from Unsplash (replace with your own photos for best results)
