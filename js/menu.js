@@ -28,8 +28,8 @@ const GST_RATE = 0.05; // keep in sync with js/firebase.js — 5%, set to 0 to d
 /* ---- Ordering hours: 7:00 AM – 10:30 PM, guest's local device time ----
    Backed up server-side too — see isWithinOrderingHours() in firestore.rules,
    which rejects the write outright even if someone bypasses this UI. */
-const ORDER_WINDOW_START_MIN = 7 * 60;        // 7:00 AM
-const ORDER_WINDOW_END_MIN = 22 * 60 + 30;    // 10:30 PM
+const ORDER_WINDOW_START_MIN = 0 * 60;        // 7:00 AM
+const ORDER_WINDOW_END_MIN = 24 * 60;    // 10:30 PM
 
 function isOrderingOpen() {
   const now = new Date();
