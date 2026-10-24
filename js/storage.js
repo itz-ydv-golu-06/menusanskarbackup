@@ -169,7 +169,7 @@ const SanskarDB = (() => {
   /* ------------------------ Theme ------------------------- */
 
   function getTheme() {
-    return localStorage.getItem(KEYS.THEME) || "dark";
+    return localStorage.getItem(KEYS.THEME) || "light";
   }
 
   function setTheme(theme) {

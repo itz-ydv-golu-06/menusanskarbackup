@@ -7,51 +7,51 @@
 
 /* ---------------------------- Tokens ---------------------------- */
 :root {
-  --bg: #0c0a07;
-  --bg-2: #120e09;
-  --panel: #191410;
-  --panel-2: #221a12;
-  --line: rgba(217, 180, 92, 0.16);
-  --line-strong: rgba(217, 180, 92, 0.36);
-  --gold: #d9b45c;
-  --gold-bright: #f0d492;
-  --gold-deep: #a97f2c;
-  --cream: #f4ecdd;
-  --text: #e9e1d2;
-  --muted: #a89a80;
+  --bg: #0b1130;
+  --bg-2: #0f1840;
+  --panel: #131c4a;
+  --panel-2: #19245c;
+  --line: rgba(245, 246, 243, 0.14);
+  --line-strong: rgba(245, 246, 243, 0.32);
+  --gold: #f5a62a;
+  --gold-bright: #ffc566;
+  --gold-deep: #c97800;
+  --cream: #f5f6f3;
+  --text: #dfe3f2;
+  --muted: #a3abcb;
   --veg: #46a06a;
   --nonveg: #c0563f;
-  --danger: #d06a55;
-  --shadow: 0 30px 60px -22px rgba(0, 0, 0, 0.7);
-  --radius: 18px;
-  --serif: "Playfair Display", Georgia, serif;
-  --sans: "Jost", "Segoe UI", sans-serif;
-  --italic: "Cormorant Garamond", Georgia, serif;
-  --nav-h: 76px;
-  --glass: rgba(12, 10, 7, 0.82);
-  --glass-solid: rgba(12, 10, 7, 0.97);
-  --glow: rgba(217, 180, 92, 0.14);
-  --fade: rgba(12, 10, 7, 0.55);
+  --danger: #e0806a;
+  --shadow: 0 24px 50px -22px rgba(0, 0, 0, 0.6);
+  --radius: 10px;
+  --serif: "Rozha One", "Noto Serif Devanagari", Georgia, serif;
+  --sans: "Hind", "Segoe UI", system-ui, sans-serif;
+  --italic: "Hind", "Segoe UI", system-ui, sans-serif;
+  --nav-h: 72px;
+  --glass: rgba(11, 17, 48, 0.9);
+  --glass-solid: rgba(11, 17, 48, 0.98);
+  --glow: rgba(245, 166, 42, 0.12);
+  --fade: rgba(11, 17, 48, 0.55);
 }
 
 body.theme-light {
-  --bg: #f7f2e8;
-  --bg-2: #efe7d8;
-  --panel: #fffdf8;
-  --panel-2: #f3ecdd;
-  --line: rgba(122, 92, 26, 0.18);
-  --line-strong: rgba(122, 92, 26, 0.4);
-  --gold: #9a7420;
-  --gold-bright: #7c5a12;
-  --gold-deep: #b98a2f;
-  --cream: #241c0e;
-  --text: #33291a;
-  --muted: #77694f;
-  --shadow: 0 26px 50px -24px rgba(90, 66, 20, 0.35);
-  --glass: rgba(247, 242, 232, 0.86);
-  --glass-solid: rgba(247, 242, 232, 0.97);
-  --glow: rgba(154, 116, 32, 0.12);
-  --fade: rgba(247, 242, 232, 0.55);
+  --bg: #f5f6f3;
+  --bg-2: #eceee9;
+  --panel: #ffffff;
+  --panel-2: #eceee9;
+  --line: rgba(17, 25, 63, 0.14);
+  --line-strong: rgba(17, 25, 63, 0.34);
+  --gold: #173a9e;
+  --gold-bright: #0f2670;
+  --gold-deep: #c97800;
+  --cream: #0f2670;
+  --text: #11193f;
+  --muted: #4a5170;
+  --shadow: 0 20px 44px -24px rgba(17, 25, 63, 0.35);
+  --glass: rgba(245, 246, 243, 0.92);
+  --glass-solid: rgba(245, 246, 243, 0.98);
+  --glow: rgba(23, 58, 158, 0.1);
+  --fade: rgba(245, 246, 243, 0.55);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -269,7 +269,7 @@ body.theme-light .btn-gold { background: linear-gradient(135deg, #d9b45c, #a97f2
   animation: cardIn 0.55s cubic-bezier(0.22, 0.8, 0.24, 1) backwards;
 }
 @keyframes cardIn { from { opacity: 0; transform: translateY(26px) scale(0.98); } to { opacity: 1; transform: none; } }
-.food-card:hover { transform: translateY(-7px); border-color: var(--line-strong); box-shadow: var(--shadow); }
+.food-card:hover { border-color: var(--line-strong); }
 .food-card.unavailable { opacity: 0.62; filter: saturate(0.55); }
 
 .food-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--panel-2); }
@@ -542,3 +542,61 @@ body.theme-light .toast { background: rgba(255, 253, 248, 0.96); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
+
+
+/* ==============================================================
+   v3 refresh overrides: blue-pottery cobalt + marigold
+   ============================================================== */
+body { font-weight: 400; }
+:focus-visible { outline: 3px solid #f29a0d; outline-offset: 3px; }
+::selection { background: #f29a0d; color: #11193f; }
+
+/* Rozha One ships one weight; stop the browser faking bold */
+.brand > span:last-child, .menu-hero h1, .food-body h4, .cart-drawer-head h3,
+.cart-line-body h5, .cart-line-subtotal, .summary-grand, .cart-success h3,
+.sticky-cart-total { font-weight: 400; }
+
+/* Brand lockup: plain, no tracked caps */
+.brand em { font-style: normal; font-size: 0.8rem; letter-spacing: 0; text-transform: none; color: var(--muted); }
+.loader-text { font-style: normal; letter-spacing: 0; }
+
+/* Primary actions: solid marigold, dark ink text, in both themes */
+.btn-gold, body.theme-light .btn-gold,
+.chip.active, .fab-call, .cart-badge, .nav-cta .cart-badge {
+  background: #f29a0d; color: #11193f; box-shadow: none;
+}
+.btn-gold:hover { background: #ffb02e; }
+.btn { letter-spacing: 0.02em; text-transform: none; font-size: 0.98rem; font-weight: 600; }
+.btn-outline { border-color: var(--gold); color: var(--gold); }
+.btn-outline:hover { background: var(--gold); color: var(--bg); }
+body:not(.theme-light) .btn-outline { border-color: var(--line-strong); color: var(--cream); }
+body:not(.theme-light) .btn-outline:hover { background: rgba(245,246,243,.12); color: var(--cream); }
+
+/* Menu hero: quiet, left-aligned, no eyebrow or decoration */
+.menu-hero { text-align: left; }
+.menu-hero::before, .menu-hero::after { display: none; }
+.menu-hero h1 { margin: 0 0 12px; }
+.menu-hero p { margin-inline: 0; }
+.hero-pills { justify-content: flex-start; }
+.hero-pills span { text-transform: none; letter-spacing: 0; font-size: 0.92rem; font-weight: 500; }
+
+/* Filters and toolbar */
+.chip { text-transform: none; letter-spacing: 0; font-size: 0.95rem; font-weight: 500; }
+
+/* Dish cards: flat, bordered, no glow */
+.food-card, .menu-card { box-shadow: none; }
+.food-body h4 .price { font-family: var(--sans); font-weight: 600; color: var(--gold); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* Sentence case everywhere; shadow only while the drawer is open */
+.nav-links a, .view-toggle button, .results-meta { text-transform: none; letter-spacing: 0; }
+.nav-links a { font-size: 0.98rem; font-weight: 500; }
+.view-toggle button { font-size: 0.92rem; }
+.view-toggle button.active { color: #fff; }
+body:not(.theme-light) .view-toggle button.active { background: #f29a0d; color: #11193f; }
+.results-meta { font-size: 0.95rem; }
+.cart-drawer:not(.open) { box-shadow: none; }
